@@ -146,7 +146,7 @@ A Simple demonstration of the module
     ## "Hyphenation"
     >>> vb.hyphenation("hippopotamus")
     [{'text': 'hip', 'type': 'secondary stress', 'seq': 0}, {'text': 'po', 'seq': 1}, {'text': 'pot', 'type': 'stress', 'seq': 2}, {'text': 'a', 'seq': 3}, {'text': 'mus', 'seq': 4}]
-    >>> >>> vb.hyphenation("amazing")
+    >>> vb.hyphenation("amazing")
     [{'text': 'a', 'seq': 0}, {'text': 'maz', 'type': 'stress', 'seq': 1}, {'text': 'ing', 'seq': 2}]
     >>> 
 
@@ -154,7 +154,12 @@ How does it work
 ----------------
 
 Under the hood, it makes use of 4 awesome API's to give you consistent
-results. The API's being - Urbandict - Glosbe - BighugeLabs - Wordnik
+results. The API's being
+
+-  Urbandict
+-  Glosbe
+-  BighugeLabs
+-  Wordnik
 
 To do
 -----
@@ -208,8 +213,9 @@ tracker <https://github.com/prodicus/vocabulary/issues>`__
 License :
 ---------
 
-`MIT License <http://prodicus.mit-license.org/>`__ © Tasdik Rahman You
-can find a copy of the License at http://prodicus.mit-license.org/
+`MIT License <http://prodicus.mit-license.org/>`__ © Tasdik Rahman
+
+You can find a copy of the License at http://prodicus.mit-license.org/
 
 .. |PyPI version| image:: https://badge.fury.io/py/vocabulary.svg
    :target: https://badge.fury.io/py/vocabulary
