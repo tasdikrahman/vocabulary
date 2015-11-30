@@ -20,6 +20,7 @@ Table of Contents
 
 -  `Demo <#demo>`__
 -  `Usage <#usage>`__
+-  `Help <#help>`__
 -  `How does it Work <#how-does-it-work>`__
 -  `To Do <#to-do>`__
 -  `Tests <#tests>`__
@@ -97,17 +98,17 @@ Uninstalling
 Demo
 ----
 
-.. figure:: 
-   :alt: Imgur link
+.. figure:: http://i.imgur.com/oTWls8R.gifv
+   :alt: Demo link
 
-   Imgur link
+   Demo link
 
 Usage
 -----
 
 A Simple demonstration of the module
 
-.. code:: bash
+.. code:: python
 
     ## Importing the module
     >>> from vocabulary import Vocabulary as vb
@@ -149,6 +150,38 @@ A Simple demonstration of the module
     >>> vb.hyphenation("amazing")
     [{'text': 'a', 'seq': 0}, {'text': 'maz', 'type': 'stress', 'seq': 1}, {'text': 'ing', 'seq': 2}]
     >>> 
+
+Help
+----
+
+If you need to see the usage for any of the methods, do a
+
+.. code:: python
+
+    >>> from vocabulary import Vocabulary as vb
+    >>> help(vb.meaning)
+    Help on function meaning in module vocabulary.vocabulary:
+
+    meaning(phrase, source_lang='en', dest_lang='en')
+        make calls to the
+        - glosbe API(default choice)
+        - Wordnik API 
+        
+        Wordnik's API gives less results so not Using it here for getting the meanings
+        
+        params: 
+        =======
+        source_lang, dest_lang (both default to "en" if nothing is specified)
+        
+        Usage: 
+        ======
+        >>> from vocabulary import Vocabulary as vb
+        >>> vb.meaning("levitate")
+        '[{"text": "(intransitive) Be suspended in the air, as if in defiance of gravity.", "seq": 0}, {"text": "(transitive) To cause to rise in the air and float, as if in defiance of gravity.", "seq": 1}]'
+        >>>
+    (END)
+
+and so on for other functions
 
 How does it work
 ----------------
