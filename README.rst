@@ -98,7 +98,7 @@ Uninstalling
 Demo
 ----
 
-.. figure:: http://i.imgur.com/oTWls8R.gifv
+.. figure:: https://raw.githubusercontent.com/prodicus/prodicus.github.io/master/images/vocabulary.gif
    :alt: Demo link
 
    Demo link
