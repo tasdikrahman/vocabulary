@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from vocab_module import Vocabulary as vb
+from vocabulary import Vocabulary as vb
 # import Vocabulary as vb
 try:
     import simplejson as json

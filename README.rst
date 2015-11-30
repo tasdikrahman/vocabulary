@@ -4,7 +4,7 @@
 Vocabulary
 ==========
 
-|PyPI version| |License| |Build Status|
+|PyPI version| |License| |Python Versions| |Build Status|
 
 A dictionary magician in the form of a module!
 
@@ -217,8 +217,9 @@ License :
 
 You can find a copy of the License at http://prodicus.mit-license.org/
 
-.. |PyPI version| image:: https://badge.fury.io/py/vocabulary.svg
-   :target: https://badge.fury.io/py/vocabulary
+.. |PyPI version| image:: https://img.shields.io/pypi/v/Vocabulary.svg
+   :target: https://img.shields.io/pypi/v/Vocabulary.svg
 .. |License| image:: https://img.shields.io/pypi/l/vocabulary.svg
    :target: https://img.shields.io/pypi/l/vocabulary.svg
+.. |Python Versions| image:: https://img.shields.io/pypi/pyversions/Vocabulary.svg
 .. |Build Status| image:: https://travis-ci.org/prodicus/vocabulary.svg?branch=master
