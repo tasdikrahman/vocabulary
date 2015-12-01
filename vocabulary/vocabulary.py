@@ -174,7 +174,8 @@ class Vocabulary(object):
                 return False
             '''get meanings'''
             meanings_list = Vocabulary.__parse_content(tuc_content, "meanings")     
-            return meanings_list
+            # return meanings_list
+            return json.dumps(meanings_list)
         else:
             return False
 
@@ -308,8 +309,8 @@ class Vocabulary(object):
                     for key, value in part_of_speech.items():
                         final_list.append({ "seq": i, "text": key, "example:" :value})
                         i += 1
-                    # return json.dumps(final_list)
-                    return final_list
+                    return json.dumps(final_list)
+                    # return final_list
                 else:
                     return False
         else: 
@@ -392,7 +393,7 @@ class Vocabulary(object):
         hyphenation = {}
         json_obj = Vocabulary.__return_json(url)
         if json_obj:
-            # return json.dumps(json_obj)
-            return json_obj
+            return json.dumps(json_obj)
+            # return json_obj
         else:
             return False

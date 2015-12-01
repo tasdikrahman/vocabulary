@@ -164,8 +164,8 @@ A Simple demonstration of the module
 
     ## Extracting "Meaning"
     >>> vb.meaning("hillbilly")
-    [{'text': 'Someone who is from the hills; especially from a rural area, with a connotation of a lack of refinement or sophistication.', 'seq': 0}, {'text': 'someone who is from the hills', 'seq': 1}, {'text': 'A white person from the rural southern part of the United States.', 'seq': 2}]
-    >>>
+    '[{"text": "Someone who is from the hills; especially from a rural area, with a connotation of a lack of refinement or sophistication.", "seq": 0}, {"text": "someone who is from the hills", "seq": 1}, {"text": "A white person from the rural southern part of the United States.", "seq": 2}]'
+    >>> 
 
     ## "Synonym"
     >>> vb.synonym("hurricane")
@@ -180,8 +180,8 @@ A Simple demonstration of the module
 
     ## "Part of Speech"
     >>> vb.part_of_speech("hello")
-    [{'text': 'interjection', 'example:': 'Used to greet someone, answer the telephone, or express surprise.', 'seq': 0}]
-    >>> 
+    '[{"text": "interjection", "example:": "Used to greet someone, answer the telephone, or express surprise.", "seq": 0}]'
+    >>>
 
     ## "Usage Examples"
     >>> vb.usage_example("chicanery")
@@ -195,10 +195,10 @@ A Simple demonstration of the module
 
     ## "Hyphenation"
     >>> vb.hyphenation("hippopotamus")
-    [{'text': 'hip', 'type': 'secondary stress', 'seq': 0}, {'text': 'po', 'seq': 1}, {'text': 'pot', 'type': 'stress', 'seq': 2}, {'text': 'a', 'seq': 3}, {'text': 'mus', 'seq': 4}]
+    '[{"text": "hip", "type": "secondary stress", "seq": 0}, {"text": "po", "seq": 1}, {"text": "pot", "type": "stress", "seq": 2}, {"text": "a", "seq": 3}, {"text": "mus", "seq": 4}]'
     >>> vb.hyphenation("amazing")
-    [{'text': 'a', 'seq': 0}, {'text': 'maz', 'type': 'stress', 'seq': 1}, {'text': 'ing', 'seq': 2}]
-    >>> 
+    '[{"text": "a", "seq": 0}, {"text": "maz", "type": "stress", "seq": 1}, {"text": "ing", "seq": 2}]'
+    >>>
 
 Help
 ----

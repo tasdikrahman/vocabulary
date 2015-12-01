@@ -16,7 +16,8 @@ class TestModule(unittest.TestCase):
     def test_meaning(self):
         current_result = vb.meaning("humming")
         result = '[{"seq": 0, "text": "Present participle of hum."}]'
-        expected_result = json.loads(result)
+        middle_val = json.loads(result)
+        expected_result = json.dumps(middle_val)
         self.assertEqual(current_result, expected_result)
 
     def test_synonym(self):
@@ -41,13 +42,15 @@ class TestModule(unittest.TestCase):
     def test_partOfSpeech_1(self):
         current_result = vb.part_of_speech("hello")
         result = '[{"text": "interjection", "example:": "Used to greet someone, answer the telephone, or express surprise.", "seq": 0}]'
-        expected_result = json.loads(result)
+        middle_val = json.loads(result)
+        expected_result = json.dumps(middle_val)
         self.assertEqual(current_result, expected_result)
 
     def test_partOfSpeech_2(self):
         current_result = vb.part_of_speech("rapidly")
         result = '[{"text": "adverb", "example:": "With speed; in a rapid manner.", "seq": 0}]'
-        expected_result = json.loads(result)
+        middle_val = json.loads(result)
+        expected_result = json.dumps(middle_val)
         self.assertEqual(current_result, expected_result)
 
     def test_usageExamples(self):
@@ -66,7 +69,8 @@ class TestModule(unittest.TestCase):
     def test_hyphenation(self):
         current_result = vb.hyphenation("hippopotamus")
         result = '[{"seq": 0, "text": "hip", "type": "secondary stress"}, {"seq": 1, "text": "po"}, {"seq": 2, "text": "pot", "type": "stress"}, {"seq": 3, "text": "a"}, {"seq": 4, "text": "mus"}]'
-        expected_result = json.loads(result)
+        middle_val = json.loads(result)
+        expected_result = json.dumps(middle_val)
         self.assertEqual(current_result, expected_result)
 
 if __name__ == "__main__":
