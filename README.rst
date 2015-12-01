@@ -13,25 +13,33 @@ Table of Contents
 
 -  `What is it? <#what-is-it>`__
 -  `Features <#features>`__
+-  `Why should I use Vocabulary <#why-should-i-use-vocabulary>`__
+
+   -  `Wordnet Comparison <#wordnet-comparison>`__
+
 -  `Installation <#installation>`__
 
    -  `pip <#option-1-installing-through-pip-suggested-way>`__
    -  `from source <#option-2-installing-from-source>`__
 
--  `Demo <#demo>`__
 -  `Usage <#usage>`__
--  `Help <#help>`__
+
+   -  `Demo <#demo>`__
+   -  `Help <#help>`__
+
 -  `How does it Work <#how-does-it-work>`__
--  `To Do <#to-do>`__
--  `Tests <#tests>`__
 -  `Contributing <#contributing>`__
+
+   -  `To Do <#to-do>`__
+   -  `Tests <#tests>`__
+
 -  `Bugs <#bugs>`__
 -  `License <#license>`__
 
 What is it
 ----------
 
-Using ``Vocabulary``, you can get
+For a given word, using ``Vocabulary``, you can get it's
 
 -  **Meaning**
 
@@ -43,10 +51,7 @@ Using ``Vocabulary``, you can get
 -  **Usage example** : a quick example on how to use the word in a
    sentence
 -  **Pronuciation**
--  **Hyphenation** : Breaks down the word and shows the particular
-   stress points(if any) during pronunciation
-
-for a given word!
+-  **Hyphenation** : shows the particular stress points(if any)
 
 Features
 --------
@@ -57,11 +62,55 @@ Features
    (https://github.com/kennethreitz/requests))
 -  Easy to
    `install <https://github.com/prodicus/vocabulary#installation>`__
+-  A decent substitute to ``Wordnet``\ (well almost!) Wanna see? Here is
+   a `small comparison <#wordnet-comparison>`__
 -  Stupidly `easy to
    use <https://github.com/prodicus/vocabulary#usage>`__
 -  Fast!
--  Supports both, ``python2.*`` and ``python3.*``
--  Works on Mac, Linux and Windows
+-  Supports
+
+   -  both, ``python2.*`` and ``python3.*``
+   -  Works on Mac, Linux and Windows
+
+Why should I use Vocabulary
+---------------------------
+
+``Wordnet`` is a great resource. No doubt about it! So why should you
+use ``Vocabulary`` when we already have ``Wordnet`` out there?
+
+My 2 cents
+
+Wordnet Comparison
+~~~~~~~~~~~~~~~~~~
+
+Let's say you want to find out the synonyms for the word ``car``.
+
+-  Using ``Wordnet``
+
+.. code:: python
+
+    >>> from nltk.corpus import wordnet
+    >>> syns = wordnet.synsets('car')
+    >>> syns[0].lemmas[0].name
+    'car'
+    >>> [s.lemmas[0].name for s in syns]
+    ['car', 'car', 'car', 'car', 'cable_car']
+
+    >>> [l.name for s in syns for l in s.lemmas]
+    ['car', 'auto', 'automobile', 'machine', 'motorcar', 'car', 'railcar', 'railway_car', 'railroad_car', 'car', 'gondola', 'car', 'elevator_car', 'cable_car', 'car']
+
+-  Doind the same using ``Vocabulary``
+
+.. code:: python
+
+    >>> from vocabulary import Vocabulary as vb
+    >>> vb.synonym("car")
+    '[{"seq": 0, "text": "automotive"}, {"seq": 1, "text": "motor"}, {"seq": 2, "text": "wagon"}, {"seq": 3, "text": "cart"}, {"seq": 4, "text": "automobile"}]'
+    >>> 
+
+So there you go. You get the data in an easy ``JSON`` format.
+
+You can go on comparing for the other methods too.
 
 Installation
 ------------
@@ -194,6 +243,18 @@ results. The API's being
 -  BighugeLabs
 -  Wordnik
 
+Contributing
+------------
+
+Feel free to contribute
+
+1. Fork it.
+2. Create your feature branch
+   (``git checkout -b my-new-awesome-feature``)
+3. Commit your changes (``git commit -am 'Added <xyz> feature'``)
+4. Push to the branch (``git push origin my-new-awesome-feature``)
+5. Create new Pull Request
+
 To do
 -----
 
@@ -224,18 +285,6 @@ Run the test cases by doing a
 
     OK
     (testvocab)
-
-Contributing
-------------
-
-Feel free to contribute
-
-1. Fork it.
-2. Create your feature branch
-   (``git checkout -b my-new-awesome-feature``)
-3. Commit your changes (``git commit -am 'Added <xyz> feature'``)
-4. Push to the branch (``git push origin my-new-awesome-feature``)
-5. Create new Pull Request
 
 Bugs
 ----

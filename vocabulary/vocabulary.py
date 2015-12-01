@@ -31,15 +31,15 @@ __author__ = "Tasdik Rahman"
 
 class Vocabulary(object):
     """
-    |  Private methods  | Public methods   |
+    |      Function     | Public methods   |
     |:-----------------:|------------------|
     |  __get_api_link() | meaning()        |
     | __return_json()   | synonym()        |
     | __parse_content() | antonym()        |
-    | __clean_dict()    | part_of_speech() |
-    |                   | usage_example()  |
-    |                   | pronunciation()  |
+    | __clean_dict()    | usage_example()  |
     |                   | hyphenation()    |
+    |                   | part_of_speech() |
+    |                   | pronunciation()  |
     """
     @staticmethod
     def __get_api_link(api):
@@ -53,19 +53,15 @@ class Vocabulary(object):
         params: api (possible values : "wordnik", "glosbe", "urbandict", "bighugelabs")
 
         """
-        URBANDICT_URL = "http://api.urbandictionary.com/v0/{action}?term={word}"
-        WORDNIK_URL = "http://api.wordnik.com/v4/word.json/{word}/{action}?api_key=1e940957819058fe3ec7c59d43c09504b400110db7faa0509"
-        GLOSBE_URL = "https://glosbe.com/gapi/translate?from={source_lang}&dest={dest_lang}&format=json&pretty=true&phrase={word}"    
-        BIGHUGELABS_URL = "http://words.bighugelabs.com/api/2/eb4e57bb2c34032da68dfeb3a0578b68/{word}/json"
+        api_name2links = {
+            "wordnik": "http://api.wordnik.com/v4/word.json/{word}/{action}?api_key=1e940957819058fe3ec7c59d43c09504b400110db7faa0509",
+            "glosbe": "https://glosbe.com/gapi/translate?from={source_lang}&dest={dest_lang}&format=json&pretty=true&phrase={word}",
+            "urbandict": "http://api.urbandictionary.com/v0/{action}?term={word}",
+            "bighugelabs": "http://words.bighugelabs.com/api/2/eb4e57bb2c34032da68dfeb3a0578b68/{word}/json"
+        }
 
-        if api == "wordnik":
-            return WORDNIK_URL
-        elif api == "glosbe":
-            return GLOSBE_URL
-        elif api == "urbandict":
-            return URBANDICT_URL
-        elif api == "bighugelabs":
-            return BIGHUGELABS_URL
+        if api in api_name2links.keys():
+            return api_name2links[api]
         else:
             return False
 
