@@ -108,6 +108,10 @@ Let's say you want to find out the synonyms for the word ``car``.
     >>> from vocabulary import Vocabulary as vb
     >>> vb.synonym("car")
     '[{"seq": 0, "text": "automotive"}, {"seq": 1, "text": "motor"}, {"seq": 2, "text": "wagon"}, {"seq": 3, "text": "cart"}, {"seq": 4, "text": "automobile"}]'
+    >>> ## load the json data
+    >>> car_synonyms = json.loads(vb.synonym("car"))
+    >>> type(car_synonyms)
+    <class 'list'>
     >>> 
 
 So there you go. You get the data in an easy ``JSON`` format.
@@ -265,9 +269,9 @@ To do
 Tests
 -----
 
-``Vocabulary`` uses ``unittesting`` for testing.
+``Vocabulary`` uses ``unittesting`` for testing purposes.
 
-Run the test cases by doing a
+Running the test cases
 
 .. code:: bash
 
@@ -299,7 +303,7 @@ Known Issues
     [{'raw': '(hĭpˌə-pŏtˈə-məs)', 'rawType': 'ahd-legacy', 'seq': 0}, {'raw': 'HH IH2 P AH0 P AA1 T AH0 M AH0 S', 'rawType': 'arpabet', 'seq': 0}]
     >>> type(vb.pronunciation("hippopotamus"))
     <class 'list'>
-    >>> >>> json.dumps(vb.pronunciation("hippopotamus"))
+    >>> json.dumps(vb.pronunciation("hippopotamus"))
     '[{"raw": "(h\\u012dp\\u02cc\\u0259-p\\u014ft\\u02c8\\u0259-m\\u0259s)", "rawType": "ahd-legacy", "seq": 0}, {"raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "rawType": "arpabet", "seq": 0}]'
     >>>
 

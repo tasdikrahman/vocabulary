@@ -22,7 +22,7 @@ setup(
   license = 'MIT',
   install_requires = [
     "requests==2.8.1",
-    "wheel==0.24.0"
+    "wheel==0.26.0"
   ],
   ### adding package data to it 
   packages=find_packages(exclude=['contrib', 'docs']),
