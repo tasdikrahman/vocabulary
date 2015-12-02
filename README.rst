@@ -32,7 +32,9 @@ Table of Contents
 
    -  `To Do <#to-do>`__
    -  `Tests <#tests>`__
+   -  `Known Issues <#known-issues>`__
 
+-  `Changelog <#changelog>`__
 -  `Bugs <#bugs>`__
 -  `License <#license>`__
 
@@ -238,10 +240,10 @@ How does it work
 Under the hood, it makes use of 4 awesome API's to give you consistent
 results. The API's being
 
--  Urbandict
+-  Wordnik
 -  Glosbe
 -  BighugeLabs
--  Wordnik
+-  Urbandict
 
 Contributing
 ------------
@@ -285,6 +287,37 @@ Run the test cases by doing a
 
     OK
     (testvocab)
+
+Known Issues
+------------
+
+-  When using the method
+
+.. code:: python
+
+    >>> vb.pronunciation("hippopotamus")
+    [{'raw': '(hĭpˌə-pŏtˈə-məs)', 'rawType': 'ahd-legacy', 'seq': 0}, {'raw': 'HH IH2 P AH0 P AA1 T AH0 M AH0 S', 'rawType': 'arpabet', 'seq': 0}]
+    >>> type(vb.pronunciation("hippopotamus"))
+    <class 'list'>
+    >>> >>> json.dumps(vb.pronunciation("hippopotamus"))
+    '[{"raw": "(h\\u012dp\\u02cc\\u0259-p\\u014ft\\u02c8\\u0259-m\\u0259s)", "rawType": "ahd-legacy", "seq": 0}, {"raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "rawType": "arpabet", "seq": 0}]'
+    >>>
+
+You are being returned a ``list`` object instead of a ``JSON`` object.
+When returning the latter, there are some ``unicode`` issues. A fix for
+this will be released soon.
+
+Changelog
+---------
+
+0.0.4
+~~~~~
+
+-  ``JSON`` inconsistency fixed for the methods
+
+   -  ``vb.hyphenation()``
+   -  ``vb.part_of_speech()``
+   -  ``vb.meaning()``
 
 Bugs
 ----
