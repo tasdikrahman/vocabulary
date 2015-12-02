@@ -6,7 +6,7 @@ except ImportError:
   from distutils.core import setup
 
 try:
-    readme = open("README.rst")
+    readme = open("README.rst", encoding="utf8")
     long_description = str(readme.read())
 finally:
     readme.close()
