@@ -43,15 +43,11 @@ class Vocabulary(object):
     """
     @staticmethod
     def __get_api_link(api):
-        """returns
-         - urbandictionary
-         - wordnik
-         - glosbe
-         - bighugelabs
-        API links
+        """
+        returns API links
 
-        params: api (possible values : "wordnik", "glosbe", "urbandict", "bighugelabs")
-
+        :param api: possible values are "wordnik", "glosbe", "urbandict", "bighugelabs"
+        :returns: returns API links to urbandictionary, wordnik, glosbe, bighugelabs
         """
         api_name2links = {
             "wordnik": "http://api.wordnik.com/v4/word.json/{word}/{action}?api_key=1e940957819058fe3ec7c59d43c09504b400110db7faa0509",
@@ -67,12 +63,14 @@ class Vocabulary(object):
 
     @staticmethod
     def __return_json(url):
-        """Takes the passed url and returns the json object by making a request
-         to the specific API
-
+        """
+        Returns JSON data which is returned by querrying the API service
         Called by 
          - meaning()
          - synonym()
+
+        :param url: the complete formatted url which is then queried using requests
+        :returns: json content being fed by the API
         """
         response = requests.get(url)
         if response.status_code == 200:
@@ -83,7 +81,8 @@ class Vocabulary(object):
 
     @staticmethod
     def __parse_content(tuc_content, content_to_be_parsed):
-        """parses the passed "tuc_content" for
+        """
+        parses the passed "tuc_content" for
          - meanings
          - synonym
         received by querrying the glosbe API 
@@ -91,6 +90,10 @@ class Vocabulary(object):
         Called by 
          - meaning()
          - synonym()
+
+        :param tuc_content: passed on the calling Function. A list object
+        :param content_to_be_parsed: data to be parsed from. Whether to parse "tuc" for meanings or synonyms
+        :returns: resturns a list which contains the parsed data from "tuc"
         """
         initial_parsed_content = {}
         
@@ -121,14 +124,11 @@ class Vocabulary(object):
 
     @staticmethod
     def __clean_dict(dictionary):
-        """Takes the dictionary from
-            - meaning
+        """
+        Takes the dictionary from __parse_content() and creates a well formatted list
 
-        and creates a well formatted list
-
-        params:
-        ======
-        dictionary
+        :param dictionary: unformatted dict
+        :returns: a list which contains dict's as it's elements
         """
         key_dict = {}
         value_dict = {}
@@ -146,22 +146,13 @@ class Vocabulary(object):
 
     @staticmethod
     def meaning(phrase, source_lang="en", dest_lang="en"):
-        """make calls to the
-         - glosbe API(default choice)
-         - Wordnik API 
+        """
+        make calls to the glosbe API
 
-         Wordnik's API gives less results so not Using it here for getting the meanings
-
-         params: 
-         =======
-         source_lang, dest_lang (both default to "en" if nothing is specified)
-
-         Usage: 
-         ======
-         >>> from vocabulary import Vocabulary as vb
-         >>> vb.meaning("levitate")
-         '[{"text": "(intransitive) Be suspended in the air, as if in defiance of gravity.", "seq": 0}, {"text": "(transitive) To cause to rise in the air and float, as if in defiance of gravity.", "seq": 1}]'
-         >>> 
+        :param phrase: word for which meaning is to be found
+        :param source_lang: Defaults to : "en" 
+        :param dest_lang: Defaults to : "en" For eg: "fr" for french
+        :returns: returns a json object
         """
         base_url = Vocabulary.__get_api_link("glosbe")
         url = base_url.format(word=phrase, source_lang=source_lang, dest_lang=dest_lang)
@@ -181,19 +172,14 @@ class Vocabulary(object):
 
     @staticmethod
     def synonym(phrase, source_lang="en", dest_lang="en"):
-        """Gets the synonym for the given word and returns them (if any found)
+        """
+        Gets the synonym for the given word and returns them (if any found)
         Calls the glosbe API for getting the related synonym
 
-        params:
-        =======
-        phrase, source_lang, dest_lang (both default to "en" if nothing is specified)
-
-        Usage:
-        ======
-        >>> from vocabulary import Vocabulary as vb
-        >>> vb.synonym("mundane")
-        '[{"text": "routine", "seq": 0}, {"text": "workaday", "seq": 1}, {"text": "unremarkable", "seq": 2}, {"text": "everyday", "seq": 3}, {"text": "ordinary", "seq": 4}, {"text": "earthy", "seq": 5}, {"text": "quotidian", "seq": 6}]'
-        >>>
+        :param phrase:  word for which synonym is to be found
+        :param source_lang: Defaults to : "en" 
+        :param dest_lang: Defaults to : "en" 
+        :returns: returns a json object
         """
         base_url = Vocabulary.__get_api_link("glosbe")
         url = base_url.format(word=phrase, source_lang=source_lang, dest_lang=dest_lang)
@@ -218,29 +204,20 @@ class Vocabulary(object):
     
     @staticmethod
     def antonym(phrase):
-        """queries the bighugelabs API for the antonym. The results include
-            - "syn" (synonym)
-            - "ant" (antonym)
-            - "rel" (related terms)
-            - "sim" (similar terms)
-            - "usr" (user suggestions)
+        """
+        queries the bighugelabs API for the antonym. The results include
+         - "syn" (synonym)
+         - "ant" (antonym)
+         - "rel" (related terms)
+         - "sim" (similar terms)
+         - "usr" (user suggestions)
 
         But currently parsing only the antonym as I have already done 
         - synonym (using glosbe API)
 
-        params:
-        ======
-        phrase
-
-        Usage:
-        ======
-        >>> vb.antonym("love")
-        '{"text": ["hate"]}'
-        >>> vb.antonym("insane")
-        '{"text": ["sane"]}'
-        >>> vb.antonym("respect")
-        '{"text": ["disesteem", "disrespect"]}'
-        >>>
+        :param phrase: word for which antonym is to be found
+        :returns: returns a json object
+        :raises KeyError: returns False when no antonyms are found
         """
         base_url = Vocabulary.__get_api_link("bighugelabs")
         url = base_url.format(word=phrase)
@@ -277,19 +254,11 @@ class Vocabulary(object):
 
     @staticmethod
     def part_of_speech(phrase):
-        """querrying Wordnik's API for knowing whether the word is a noun, adjective and the like
+        """
+        querrying Wordnik's API for knowing whether the word is a noun, adjective and the like
 
-        params:
-        ======
-        phrase
-
-        Usage:
-        =====
-        >>> Vocabulary.part_of_speech("hello")
-        '[{"text": "interjection", "example:": "Used to greet someone, answer the telephone, or express surprise.", "seq": 0}]'
-        >>> Vocabulary.part_of_speech("rapidly")
-        '[{"text": "adverb", "example:": "With speed; in a rapid manner.", "seq": 0}]'
-        >>>
+        :params phrase: word for which part_of_speech is to be found
+        :returns: returns a json object
         """
         ## We get a list object as a return value from the Wordnik API
         base_url = Vocabulary.__get_api_link("wordnik")
@@ -320,15 +289,8 @@ class Vocabulary(object):
     def usage_example(phrase):
         """Takes the source phrase and queries it to the urbandictionary API
 
-        params:
-        =======
-        phrase
-
-        Usage:
-        ======
-        >>> Vocabulary.usage_example("heroic")
-        '[{"text": "Person 1: Dude, I heard the SEAL Team got whiped out in that last mission.Person 2: Almost, there was a single survivor though. He managed to get away.Person 1: That man must be Heroic.", "seq": 0}, {"text": "Friend: Why\'d you have to go and pull heroics? Now you look like a goon", "seq": 1}, {"text": "Person 1: Dude, I heard the SEAL Team got whiped out in that last mission.Person 2: Almost, there was a single survivor though.  He managed to get away.Person 1: That man must be Heroic.", "seq": 2}]'
-        >>>
+        :params phrase: word for which usage_example is to be found
+        :returns: returns a json object
         """
         base_url = Vocabulary.__get_api_link("urbandict")
         url = base_url.format(action="define", word=phrase)
@@ -350,17 +312,11 @@ class Vocabulary(object):
 
     @staticmethod
     def pronunciation(phrase):
-        """Gets the pronunciation from the Wordnik API
+        """
+        Gets the pronunciation from the Wordnik API
 
-        params:
-        =======
-        phrase
-
-        Usage:
-        ======
-        >>> Vocabulary.pronunciation("hippopotamus")
-        '[{"rawType": "ahd-legacy", "raw": "(hĭpˌə-pŏtˈə-məs)", "seq": 0}, {"rawType": "arpabet", "raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "seq": 0}]'
-        >>>
+        :params phrase: word for which pronunciation is to be found
+        :returns: returns a list object
         """
         base_url = Vocabulary.__get_api_link("wordnik")
         url = base_url.format(word=phrase, action="pronunciations")
@@ -376,17 +332,11 @@ class Vocabulary(object):
 
     @staticmethod
     def hyphenation(phrase):
-        """Returns back the stress points in the "phrase" passed
+        """
+        Returns back the stress points in the "phrase" passed
 
-        params:
-        ======
-        phrase
-
-        Usage:
-        ======
-        >>> Vocabulary.hyphenation("hippopotamus")
-        '[{"seq": 0, "text": "hip", "type": "secondary stress"}, {"seq": 1, "text": "po"}, {"seq": 2, "text": "pot", "type": "stress"}, {"seq": 3, "text": "a"}, {"seq": 4, "text": "mus"}]'
-        >>> 
+        :param phrase: word for which hyphenation is to be found
+        :returns: returns a json object
         """
         base_url = Vocabulary.__get_api_link("wordnik")
         url = base_url.format(word=phrase, action="hyphenation")

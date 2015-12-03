@@ -297,6 +297,7 @@ To do
 -----
 
 -  Add translate module
+-  Add an option like `json=False` or `json=True` where the former returns a list object
 
 Tests
 -----
