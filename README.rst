@@ -4,7 +4,7 @@
 Vocabulary
 ==========
 
-|PyPI version| |License| |Python Versions| |Build Status|
+|PyPI version| |License| |Python Versions| |Build Status| |Gitter chat|
 
 A dictionary magician in the form of a module!
 
@@ -332,7 +332,7 @@ tracker <https://github.com/prodicus/vocabulary/issues>`__
 License :
 ---------
 
-`MIT License <http://prodicus.mit-license.org/>`__ © Tasdik Rahman
+`MIT License <http://prodicus.mit-license.org/>`__ © `Tasdik Rahman <http://prodicus.github.com/>`__
 
 You can find a copy of the License at http://prodicus.mit-license.org/
 
@@ -342,8 +342,6 @@ You can find a copy of the License at http://prodicus.mit-license.org/
    :target: https://img.shields.io/pypi/l/vocabulary.svg
 .. |Python Versions| image:: https://img.shields.io/pypi/pyversions/Vocabulary.svg
 .. |Build Status| image:: https://travis-ci.org/prodicus/vocabulary.svg?branch=master
-
-
-.. image:: https://badges.gitter.im/Join%20Chat.svg
+.. |Gitter chat| image:: https://badges.gitter.im/Join%20Chat.svg
    :alt: Join the chat at https://gitter.im/prodicus/vocabulary
    :target: https://gitter.im/prodicus/vocabulary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
