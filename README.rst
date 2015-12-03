@@ -4,7 +4,7 @@
 Vocabulary
 ==========
 
-|PyPI version| |License| |Python Versions| |Build Status| |Gitter chat|
+|PyPI version| |License| |Python Versions| |Build Status| |Gitter chat| |Bitdeli Badge|
 
 A dictionary magician in the form of a module!
 
@@ -33,6 +33,7 @@ Table of Contents
    -  `To Do <#to-do>`__
    -  `Tests <#tests>`__
    -  `Known Issues <#known-issues>`__
+   -  `Dicuss <#discuss>`__
 
 -  `Changelog <#changelog>`__
 -  `Bugs <#bugs>`__
@@ -252,14 +253,45 @@ results. The API's being
 Contributing
 ------------
 
-Feel free to contribute
+create a `virtualenv <http://pypi.python.org/pypi/virtualenv>`__ first:
 
 1. Fork it.
-2. Create your feature branch
-   (``git checkout -b my-new-awesome-feature``)
-3. Commit your changes (``git commit -am 'Added <xyz> feature'``)
-4. Push to the branch (``git push origin my-new-awesome-feature``)
-5. Create new Pull Request
+2. Clone it 
+
+.. code:: bash
+
+    $ virtualenv develop              # Create virtual environment
+    $ source develop/bin/activate     # Change default python to virtual one
+    (develop)$ pip install -r requirements.txt  # Install requirements for 'Vocablary' in virtual environment
+    (develop)$ git clone https://github.com/prodicus/vocabulary.git
+
+Or, if ``virtualenv`` is not installed on your system:
+
+.. code:: bash
+
+    $ wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+    $ python virtualenv.py develop    # Create virtual environment
+    $ source develop/bin/activate     # Change default python to virtual one
+    (develop)$ pip install -r requirements.txt  # Install requirements for 'Vocablary' in virtual environment
+    (develop)$ git clone https://github.com/prodicus/vocabulary.git
+
+3. Create your feature branch (``$ git checkout -b my-new-awesome-feature``)
+
+4. Commit your changes (``$ git commit -am 'Added <xyz> feature'``)
+
+5. Run tests
+
+.. code:: bash
+
+    (develop) $ ./tests.py -v
+
+If everything is running fine, integrate your feature 
+
+6. Push to the branch (``$ git push origin my-new-awesome-feature``)
+
+7. Create new Pull Request
+
+Hack away!
 
 To do
 -----
@@ -311,6 +343,12 @@ You are being returned a ``list`` object instead of a ``JSON`` object.
 When returning the latter, there are some ``unicode`` issues. A fix for
 this will be released soon.
 
+Discuss
+-------
+
+Join us on our `Gitter channel <https://gitter.im/prodicus/vocabulary>`__
+if you want to chat or if you have any questions.
+
 Changelog
 ---------
 
@@ -319,9 +357,9 @@ Changelog
 
 -  ``JSON`` inconsistency fixed for the methods
 
-   -  ``vb.hyphenation()``
-   -  ``vb.part_of_speech()``
-   -  ``vb.meaning()``
+   -  ``Vocabulary.hyphenation()``
+   -  ``Vocabulary.part_of_speech()``
+   -  ``Vocabulary.meaning()``
 
 Bugs
 ----
@@ -345,3 +383,5 @@ You can find a copy of the License at http://prodicus.mit-license.org/
 .. |Gitter chat| image:: https://badges.gitter.im/Join%20Chat.svg
    :alt: Join the chat at https://gitter.im/prodicus/vocabulary
    :target: https://gitter.im/prodicus/vocabulary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+.. |Bitdeli Badge| image:: https://d2weczhvl823v0.cloudfront.net/prodicus/vocabulary/trend.png
+   :target: https://bitdeli.com/free%20Bitdeli%20Badge
