@@ -33,7 +33,7 @@ Table of Contents
    -  `To Do <#to-do>`__
    -  `Tests <#tests>`__
    -  `Known Issues <#known-issues>`__
-   -  `Dicuss <#discuss>`__
+   -  `Discuss <#discuss>`__
 
 -  `Changelog <#changelog>`__
 -  `Bugs <#bugs>`__
@@ -53,7 +53,7 @@ For a given word, using ``Vocabulary``, you can get it's
    or an ``adverb`` et el
 -  **Usage example** : a quick example on how to use the word in a
    sentence
--  **Pronuciation**
+-  **Pronunciation**
 -  **Hyphenation** : shows the particular stress points(if any)
 
 Features
@@ -102,7 +102,7 @@ Let's say you want to find out the synonyms for the word ``car``.
     >>> [l.name for s in syns for l in s.lemmas]
     ['car', 'auto', 'automobile', 'machine', 'motorcar', 'car', 'railcar', 'railway_car', 'railroad_car', 'car', 'gondola', 'car', 'elevator_car', 'cable_car', 'car']
 
--  Doind the same using ``Vocabulary``
+-  Doing the same using ``Vocabulary``
 
 .. code:: python
 
