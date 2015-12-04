@@ -64,7 +64,7 @@ class Vocabulary(object):
     @staticmethod
     def __return_json(url):
         """
-        Returns JSON data which is returned by querrying the API service
+        Returns JSON data which is returned by querying the API service
         Called by 
          - meaning()
          - synonym()
@@ -85,7 +85,7 @@ class Vocabulary(object):
         parses the passed "tuc_content" for
          - meanings
          - synonym
-        received by querrying the glosbe API 
+        received by querying the glosbe API 
 
         Called by 
          - meaning()
@@ -93,7 +93,7 @@ class Vocabulary(object):
 
         :param tuc_content: passed on the calling Function. A list object
         :param content_to_be_parsed: data to be parsed from. Whether to parse "tuc" for meanings or synonyms
-        :returns: resturns a list which contains the parsed data from "tuc"
+        :returns: returns a list which contains the parsed data from "tuc"
         """
         initial_parsed_content = {}
         
