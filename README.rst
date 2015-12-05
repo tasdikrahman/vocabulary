@@ -262,8 +262,9 @@ create a `virtualenv <http://pypi.python.org/pypi/virtualenv>`__ first:
 
     $ virtualenv develop              # Create virtual environment
     $ source develop/bin/activate     # Change default python to virtual one
-    (develop)$ pip install -r requirements.txt  # Install requirements for 'Vocablary' in virtual environment
     (develop)$ git clone https://github.com/prodicus/vocabulary.git
+    (develop)$ cd vocabulary
+    (develop)$ pip install -r requirements.txt  # Install requirements for 'Vocabulary' in virtual environment
 
 Or, if ``virtualenv`` is not installed on your system:
 
@@ -272,8 +273,9 @@ Or, if ``virtualenv`` is not installed on your system:
     $ wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
     $ python virtualenv.py develop    # Create virtual environment
     $ source develop/bin/activate     # Change default python to virtual one
-    (develop)$ pip install -r requirements.txt  # Install requirements for 'Vocablary' in virtual environment
     (develop)$ git clone https://github.com/prodicus/vocabulary.git
+    (develop)$ cd vocabulary
+    (develop)$ pip install -r requirements.txt  # Install requirements for 'Vocabulary' in virtual environment
 
 3. Create your feature branch (``$ git checkout -b my-new-awesome-feature``)
 
