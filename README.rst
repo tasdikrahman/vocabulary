@@ -365,7 +365,7 @@ if you want to chat or if you have any questions.
 Contributers
 ------------
 
--  A big shout to all the [contributers](https://github.com/prodicus/vocabulary/graphs/contributors) 
+-  A big shout to all the `contributers <https://github.com/prodicus/vocabulary/graphs/contributors>`__
 
 Changelog
 ---------
