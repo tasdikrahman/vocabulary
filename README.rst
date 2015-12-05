@@ -21,6 +21,7 @@ Table of Contents
 
    -  `pip <#option-1-installing-through-pip-suggested-way>`__
    -  `from source <#option-2-installing-from-source>`__
+   -  `Upgrade package <#upgrade>`__
 
 -  `Usage <#usage>`__
 
@@ -34,6 +35,7 @@ Table of Contents
    -  `Tests <#tests>`__
    -  `Known Issues <#known-issues>`__
    -  `Discuss <#discuss>`__
+   -  `Contributers <#contributers>`__
 
 -  `Changelog <#changelog>`__
 -  `Bugs <#bugs>`__
@@ -151,13 +153,18 @@ Uninstalling
 
 ``$ pip uninstall vocabulary``
 
+Upgrade
+~~~~~~~
+
+You can update to the latest version by doing a 
+
+``$ pip install --upgrade vocabulary``
+
 Demo
 ----
 
 .. figure:: https://raw.githubusercontent.com/prodicus/prodicus.github.io/master/images/vocabulary.gif
    :alt: Demo link
-
-   Demo link
 
 Usage
 -----
@@ -253,10 +260,11 @@ results. The API's being
 Contributing
 ------------
 
-create a `virtualenv <http://pypi.python.org/pypi/virtualenv>`__ first:
-
 1. Fork it.
+
 2. Clone it 
+
+create a `virtualenv <http://pypi.python.org/pypi/virtualenv>`__ 
 
 .. code:: bash
 
@@ -317,15 +325,17 @@ Running the test cases
     test_meaning (__main__.TestModule) ... ok
     test_partOfSpeech_1 (__main__.TestModule) ... ok
     test_partOfSpeech_2 (__main__.TestModule) ... ok
-    test_pronunciation (__main__.TestModule) ... ok
+    test_pronunciation1 (__main__.TestModule) ... ok
+    test_pronunciation2 (__main__.TestModule) ... ok
     test_synonym (__main__.TestModule) ... ok
-    test_usageExamples (__main__.TestModule) ... ok
+    test_usageExamples1 (__main__.TestModule) ... ok
+    test_usageExamples2 (__main__.TestModule) ... ok
 
     ----------------------------------------------------------------------
-    Ran 9 tests in 7.742s
+    Ran 11 tests in 13.713s
 
     OK
-    (testvocab)
+
 
 Known Issues
 ------------
@@ -351,6 +361,11 @@ Discuss
 
 Join us on our `Gitter channel <https://gitter.im/prodicus/vocabulary>`__
 if you want to chat or if you have any questions.
+
+Contributers
+------------
+
+-  A big shout to all the [contributers](https://github.com/prodicus/vocabulary/graphs/contributors) 
 
 Changelog
 ---------
