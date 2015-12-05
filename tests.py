@@ -53,11 +53,16 @@ class TestModule(unittest.TestCase):
         expected_result = json.dumps(middle_val)
         self.assertEqual(current_result, expected_result)
 
-    def test_usageExamples(self):
-        current_result = vb.usage_example("hillock")
+    def test_usageExamples1(self):
+        current_result = vb.usage_example("hillock") # for valid word
         result = '[{"seq": 0, "text": "I went to the to of the hillock to look around."}]'
         middle_val = json.loads(result)
         expected_result = json.dumps(middle_val)
+        self.assertEqual(current_result, expected_result)
+        
+    def test_usageExamples2(self):
+        current_result = vb.usage_example("lksj") # # for non valid word
+        expected_result = False
         self.assertEqual(current_result, expected_result)
     
     def test_pronunciation(self):
