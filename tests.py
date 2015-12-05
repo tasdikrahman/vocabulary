@@ -53,17 +53,27 @@ class TestModule(unittest.TestCase):
         expected_result = json.dumps(middle_val)
         self.assertEqual(current_result, expected_result)
 
-    def test_usageExamples(self):
-        current_result = vb.usage_example("hillock")
+    def test_usageExamples1(self):
+        current_result = vb.usage_example("hillock") # for valid word
         result = '[{"seq": 0, "text": "I went to the to of the hillock to look around."}]'
         middle_val = json.loads(result)
         expected_result = json.dumps(middle_val)
         self.assertEqual(current_result, expected_result)
-    
-    def test_pronunciation(self):
-        current_result = vb.pronunciation("hippopotamus")
+        
+    def test_usageExamples2(self):
+        current_result = vb.usage_example("lksj") # # for non valid word
+        expected_result = False
+        self.assertEqual(current_result, expected_result)
+        
+    def test_pronunciation1(self):
+        current_result = vb.pronunciation("hippopotamus") # for valid word
         result = '[{"rawType": "ahd-legacy", "raw": "(hĭpˌə-pŏtˈə-məs)", "seq": 0}, {"rawType": "arpabet", "raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "seq": 0}]'
         expected_result = json.loads(result)
+        self.assertEqual(current_result, expected_result)
+        
+    def test_pronunciation2(self):
+        current_result = vb.pronunciation("lksj") # for non valid word
+        expected_result = False
         self.assertEqual(current_result, expected_result)
     
     def test_hyphenation(self):
