@@ -8,38 +8,12 @@ Vocabulary
 
 A dictionary magician in the form of a module!
 
-Table of Contents
------------------
+:Author: Tasdik Rahman
 
--  `What is it? <#what-is-it>`__
--  `Features <#features>`__
--  `Why should I use Vocabulary <#why-should-i-use-vocabulary>`__
+.. contents::
+    :backlinks: none
 
-   -  `Wordnet Comparison <#wordnet-comparison>`__
-
--  `Installation <#installation>`__
-
-   -  `pip <#option-1-installing-through-pip-suggested-way>`__
-   -  `from source <#option-2-installing-from-source>`__
-   -  `Upgrade package <#upgrade>`__
-
--  `Usage <#usage>`__
-
-   -  `Demo <#demo>`__
-   -  `Help <#help>`__
-
--  `How does it Work <#how-does-it-work>`__
--  `Contributing <#contributing>`__
-
-   -  `To Do <#to-do>`__
-   -  `Tests <#tests>`__
-   -  `Known Issues <#known-issues>`__
-   -  `Discuss <#discuss>`__
-   -  `Contributers <#contributers>`__
-
--  `Changelog <#changelog>`__
--  `Bugs <#bugs>`__
--  `License <#license>`__
+.. sectnum::
 
 What is it
 ----------
@@ -148,11 +122,6 @@ Option 2: Installing from source
     $ pip install -r requirements.txt
     $ python setup.py install
 
-Uninstalling
-~~~~~~~~~~~~
-
-``$ pip uninstall vocabulary``
-
 Upgrade
 ~~~~~~~
 
@@ -160,11 +129,10 @@ You can update to the latest version by doing a
 
 ``$ pip install --upgrade vocabulary``
 
-Demo
-----
+Uninstalling
+------------
 
-.. figure:: https://raw.githubusercontent.com/prodicus/prodicus.github.io/master/images/vocabulary.gif
-   :alt: Demo link
+``$ pip uninstall vocabulary``
 
 Usage
 -----
@@ -214,8 +182,14 @@ A Simple demonstration of the module
     '[{"text": "a", "seq": 0}, {"text": "maz", "type": "stress", "seq": 1}, {"text": "ing", "seq": 2}]'
     >>>
 
+Demo
+~~~~
+
+.. figure:: https://raw.githubusercontent.com/prodicus/prodicus.github.io/master/images/vocabulary.gif
+   :alt: Demo link
+
 Help
-----
+~~~~
 
 If you need to see the usage for any of the methods, do a
 
@@ -304,13 +278,13 @@ If everything is running fine, integrate your feature
 Hack away!
 
 To do
------
+~~~~~
 
 -  Add translate module
 -  Add an option like `json=False` or `json=True` where the former returns a list object
 
 Tests
------
+~~~~~
 
 ``Vocabulary`` uses ``unittesting`` for testing purposes.
 
@@ -338,7 +312,7 @@ Running the test cases
 
 
 Known Issues
-------------
+~~~~~~~~~~~~
 
 -  When using the method
 
@@ -357,13 +331,13 @@ When returning the latter, there are some ``unicode`` issues. A fix for
 this will be released soon.
 
 Discuss
--------
+~~~~~~~
 
 Join us on our `Gitter channel <https://gitter.im/prodicus/vocabulary>`__
 if you want to chat or if you have any questions.
 
 Contributers
-------------
+~~~~~~~~~~~~
 
 -  A big shout out to all the `contributers <https://github.com/prodicus/vocabulary/graphs/contributors>`__
 
