@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Vocabulary by prodicus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Vocabulary</h1>
+      <h2 class="project-tagline">Python Module to get Meanings, Synonyms and what not for a given word</h2>
+      <a href="https://github.com/prodicus/vocabulary" class="btn">View on GitHub</a>
+      <a href="https://github.com/prodicus/vocabulary/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/prodicus/vocabulary/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p><img src="http://i.imgur.com/ddxYie4.jpg" alt=""></p>
+
+<h1>
+<a id="vocabulary" class="anchor" href="#vocabulary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vocabulary</h1>
+
+<p><a href="https://img.shields.io/pypi/v/Vocabulary.svg"><img src="https://img.shields.io/pypi/v/Vocabulary.svg" alt="PyPI
+version"></a>
+<a href="https://img.shields.io/pypi/l/vocabulary.svg"><img src="https://img.shields.io/pypi/l/vocabulary.svg" alt="License"></a>
+<img src="https://img.shields.io/pypi/pyversions/Vocabulary.svg" alt="Python
+Versions"> <img src="https://travis-ci.org/prodicus/vocabulary.svg?branch=master" alt="Build
+Status">
+<a href="https://gitter.im/prodicus/vocabulary?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/prodicus/vocabulary"></a>
+<a href="https://bitdeli.com/free%20Bitdeli%20Badge"><img src="https://d2weczhvl823v0.cloudfront.net/prodicus/vocabulary/trend.png" alt="Bitdeli
+Badge"></a></p>
+
+<p>A dictionary magician in the form of a module!</p>
+
+<p>Author</p>
+
+<p>:   Tasdik Rahman</p>
+
+<h2>
+<a id="what-is-it" class="anchor" href="#what-is-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is it</h2>
+
+<p>For a given word, using <code>Vocabulary</code>, you can get it's</p>
+
+<ul>
+<li>  <strong>Meaning</strong>
+
+<ul>
+<li>  <strong>Synonyms</strong>
+</li>
+<li>  <strong>Antonyms</strong>
+</li>
+</ul>
+</li>
+<li>  <strong>Part of speech</strong> : whether the word is a <code>noun</code>, <code>interjection</code> or
+an <code>adverb</code> et el</li>
+<li>  <strong>Usage example</strong> : a quick example on how to use the word in a
+sentence</li>
+<li>  <strong>Pronunciation</strong>
+</li>
+<li>  <strong>Hyphenation</strong> : shows the particular stress points(if any)</li>
+</ul>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>  Written in uncomplicated <code>Python</code>
+</li>
+<li>  Returns <code>JSON</code> objects</li>
+<li>  Minimum dependencies ( just uses <code>requests</code>
+(<a href="https://github.com/kennethreitz/requests">https://github.com/kennethreitz/requests</a>))</li>
+<li>  Easy to
+<a href="https://github.com/prodicus/vocabulary#installation">install</a>
+</li>
+<li>  A decent substitute to <code>Wordnet</code>(well almost!) Wanna see? Here is a
+<a href="#wordnet-comparison">small comparison</a>
+</li>
+<li>  Stupidly <a href="https://github.com/prodicus/vocabulary#usage">easy to use</a>
+</li>
+<li>  Fast!</li>
+<li>  Supports
+
+<ul>
+<li>  both, <code>python2.*</code> and <code>python3.*</code>
+</li>
+<li>  Works on Mac, Linux and Windows</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="why-should-i-use-vocabulary" class="anchor" href="#why-should-i-use-vocabulary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why should I use Vocabulary</h2>
+
+<p><code>Wordnet</code> is a great resource. No doubt about it! So why should you use
+<code>Vocabulary</code> when we already have <code>Wordnet</code> out there?</p>
+
+<p>My 2 cents</p>
+
+<h3>
+<a id="wordnet-comparison" class="anchor" href="#wordnet-comparison" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wordnet Comparison</h3>
+
+<p>Let's say you want to find out the synonyms for the word <code>car</code>.</p>
+
+<ul>
+<li>  Using <code>Wordnet</code>
+</li>
+</ul>
+
+<pre lang="sourceCode"><code>&gt;&gt;&gt; from nltk.corpus import wordnet
+&gt;&gt;&gt; syns = wordnet.synsets('car')
+&gt;&gt;&gt; syns[0].lemmas[0].name
+'car'
+&gt;&gt;&gt; [s.lemmas[0].name for s in syns]
+['car', 'car', 'car', 'car', 'cable_car']
+
+&gt;&gt;&gt; [l.name for s in syns for l in s.lemmas]
+['car', 'auto', 'automobile', 'machine', 'motorcar', 'car', 'railcar', 'railway_car', 'railroad_car', 'car', 'gondola', 'car', 'elevator_car', 'cable_car', 'car']
+</code></pre>
+
+<ul>
+<li>  Doing the same using <code>Vocabulary</code>
+</li>
+</ul>
+
+<pre lang="sourceCode"><code>&gt;&gt;&gt; from vocabulary import Vocabulary as vb
+&gt;&gt;&gt; vb.synonym("car")
+'[{"seq": 0, "text": "automotive"}, {"seq": 1, "text": "motor"}, {"seq": 2, "text": "wagon"}, {"seq": 3, "text": "cart"}, {"seq": 4, "text": "automobile"}]'
+&gt;&gt;&gt; ## load the json data
+&gt;&gt;&gt; car_synonyms = json.loads(vb.synonym("car"))
+&gt;&gt;&gt; type(car_synonyms)
+&lt;class 'list'&gt;
+&gt;&gt;&gt; 
+</code></pre>
+
+<p>So there you go. You get the data in an easy <code>JSON</code> format.</p>
+
+<p>You can go on comparing for the other methods too.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a id="option-1-installing-through-pip-suggested-way" class="anchor" href="#option-1-installing-through-pip-suggested-way" aria-hidden="true"><span class="octicon octicon-link"></span></a>Option 1: installing through <a href="https://pypi.python.org/pypi/vocabulary">pip</a> (Suggested way)</h3>
+
+<p><a href="https://pypi.python.org/pypi/vocabulary">pypi package link</a></p>
+
+<p><code>$ pip install vocabulary</code></p>
+
+<p>If you are behind a proxy</p>
+
+<p><code>$ pip --proxy [username:password@]domain_name:port install vocabulary</code></p>
+
+<p><strong>Note:</strong> If you get <code>command not found</code> then
+<code>$ sudo apt-get install python-pip</code> should fix that</p>
+
+<h3>
+<a id="option-2-installing-from-source" class="anchor" href="#option-2-installing-from-source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Option 2: Installing from source</h3>
+
+<pre lang="sourceCode"><code>$ git clone https://github.com/prodicus/vocabulary.git
+$ cd vocabulary/
+$ pip install -r requirements.txt
+$ python setup.py install
+</code></pre>
+
+<h3>
+<a id="upgrade" class="anchor" href="#upgrade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Upgrade</h3>
+
+<p>You can update to the latest version by doing a</p>
+
+<p><code>$ pip install --upgrade vocabulary</code></p>
+
+<h2>
+<a id="uninstalling" class="anchor" href="#uninstalling" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uninstalling</h2>
+
+<p><code>$ pip uninstall vocabulary</code></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>A Simple demonstration of the module</p>
+
+<pre lang="sourceCode"><code>## Importing the module
+&gt;&gt;&gt; from vocabulary import Vocabulary as vb
+
+## Extracting "Meaning"
+&gt;&gt;&gt; vb.meaning("hillbilly")
+'[{"text": "Someone who is from the hills; especially from a rural area, with a connotation of a lack of refinement or sophistication.", "seq": 0}, {"text": "someone who is from the hills", "seq": 1}, {"text": "A white person from the rural southern part of the United States.", "seq": 2}]'
+&gt;&gt;&gt; 
+
+## "Synonym"
+&gt;&gt;&gt; vb.synonym("hurricane")
+'[{"text": "storm", "seq": 0}, {"text": "tropical cyclone", "seq": 1}, {"text": "typhoon", "seq": 2}, {"text": "gale", "seq": 3}]'
+&gt;&gt;&gt; 
+
+## "Antonym"
+&gt;&gt;&gt; vb.antonym("respect")
+'{"text": ["disesteem", "disrespect"]}'
+&gt;&gt;&gt; vb.antonym("insane")
+'{"text": ["sane"]}'
+
+## "Part of Speech"
+&gt;&gt;&gt; vb.part_of_speech("hello")
+'[{"text": "interjection", "example:": "Used to greet someone, answer the telephone, or express surprise.", "seq": 0}]'
+&gt;&gt;&gt;
+
+## "Usage Examples"
+&gt;&gt;&gt; vb.usage_example("chicanery")
+'[{"text": "The Bush Administration is now the commander-in-theif (lower-case intentional) thanks to their chicanery.", "seq": 0}]'
+&gt;&gt;&gt;
+
+## "Pronunciation"
+&gt;&gt;&gt; vb.pronunciation("hippopotamus")
+[{'raw': '(hĭpˌə-pŏtˈə-məs)', 'rawType': 'ahd-legacy', 'seq': 0}, {'raw': 'HH IH2 P AH0 P AA1 T AH0 M AH0 S', 'rawType': 'arpabet', 'seq': 0}]
+&gt;&gt;&gt;
+
+## "Hyphenation"
+&gt;&gt;&gt; vb.hyphenation("hippopotamus")
+'[{"text": "hip", "type": "secondary stress", "seq": 0}, {"text": "po", "seq": 1}, {"text": "pot", "type": "stress", "seq": 2}, {"text": "a", "seq": 3}, {"text": "mus", "seq": 4}]'
+&gt;&gt;&gt; vb.hyphenation("amazing")
+'[{"text": "a", "seq": 0}, {"text": "maz", "type": "stress", "seq": 1}, {"text": "ing", "seq": 2}]'
+&gt;&gt;&gt;
+</code></pre>
+
+<h3>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h3>
+
+<p><img src="https://raw.githubusercontent.com/prodicus/prodicus.github.io/master/images/vocabulary.gif" alt=""></p>
+
+<h3>
+<a id="help" class="anchor" href="#help" aria-hidden="true"><span class="octicon octicon-link"></span></a>Help</h3>
+
+<p>If you need to see the usage for any of the methods, do a</p>
+
+<pre lang="sourceCode"><code>&gt;&gt;&gt; from vocabulary import Vocabulary as vb
+&gt;&gt;&gt; help(vb.meaning)
+Help on function meaning in module vocabulary.vocabulary:
+
+meaning(phrase, source_lang='en', dest_lang='en')
+    make calls to the
+    - glosbe API(default choice)
+    - Wordnik API 
+
+    Wordnik's API gives less results so not Using it here for getting the meanings
+
+    params: 
+    =======
+    source_lang, dest_lang (both default to "en" if nothing is specified)
+
+    Usage: 
+    ======
+    &gt;&gt;&gt; from vocabulary import Vocabulary as vb
+    &gt;&gt;&gt; vb.meaning("levitate")
+    '[{"text": "(intransitive) Be suspended in the air, as if in defiance of gravity.", "seq": 0}, {"text": "(transitive) To cause to rise in the air and float, as if in defiance of gravity.", "seq": 1}]'
+    &gt;&gt;&gt;
+(END)
+</code></pre>
+
+<p>and so on for other functions</p>
+
+<h2>
+<a id="how-does-it-work" class="anchor" href="#how-does-it-work" aria-hidden="true"><span class="octicon octicon-link"></span></a>How does it work</h2>
+
+<p>Under the hood, it makes use of 4 awesome API's to give you consistent
+results. The API's being</p>
+
+<ul>
+<li>  Wordnik</li>
+<li>  Glosbe</li>
+<li>  BighugeLabs</li>
+<li>  Urbandict</li>
+</ul>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li> Fork it.</li>
+<li> Clone it</li>
+</ol>
+
+<p>create a <a href="http://pypi.python.org/pypi/virtualenv">virtualenv</a></p>
+
+<pre lang="sourceCode"><code>$ virtualenv develop              # Create virtual environment
+$ source develop/bin/activate     # Change default python to virtual one
+(develop)$ git clone https://github.com/prodicus/vocabulary.git
+(develop)$ cd vocabulary
+(develop)$ pip install -r requirements.txt  # Install requirements for 'Vocabulary' in virtual environment
+</code></pre>
+
+<p>Or, if <code>virtualenv</code> is not installed on your system:</p>
+
+<pre lang="sourceCode"><code>$ wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+$ python virtualenv.py develop    # Create virtual environment
+$ source develop/bin/activate     # Change default python to virtual one
+(develop)$ git clone https://github.com/prodicus/vocabulary.git
+(develop)$ cd vocabulary
+(develop)$ pip install -r requirements.txt  # Install requirements for 'Vocabulary' in virtual environment
+</code></pre>
+
+<ol>
+<li> Create your feature branch
+(<code>$ git checkout -b my-new-awesome-feature</code>)</li>
+<li> Commit your changes (<code>$ git commit -am 'Added &lt;xyz&gt; feature'</code>)</li>
+<li> Run tests</li>
+</ol>
+
+<pre lang="sourceCode"><code>(develop) $ ./tests.py -v
+</code></pre>
+
+<p>If everything is running fine, integrate your feature</p>
+
+<ol>
+<li> Push to the branch (<code>$ git push origin my-new-awesome-feature</code>)</li>
+<li> Create new Pull Request</li>
+</ol>
+
+<p>Hack away!</p>
+
+<h3>
+<a id="to-do" class="anchor" href="#to-do" aria-hidden="true"><span class="octicon octicon-link"></span></a>To do</h3>
+
+<ul>
+<li>  Add translate module</li>
+<li>  Add an option like json=False or json=True where the former returns
+a list object</li>
+</ul>
+
+<h3>
+<a id="tests" class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests</h3>
+
+<p><code>Vocabulary</code> uses <code>unittesting</code> for testing purposes.</p>
+
+<p>Running the test cases</p>
+
+<pre lang="sourceCode"><code>$ ./tests.py -v
+test_antonym_1 (__main__.TestModule) ... ok
+test_antonym_2 (__main__.TestModule) ... ok
+test_hyphenation (__main__.TestModule) ... ok
+test_meaning (__main__.TestModule) ... ok
+test_partOfSpeech_1 (__main__.TestModule) ... ok
+test_partOfSpeech_2 (__main__.TestModule) ... ok
+test_pronunciation1 (__main__.TestModule) ... ok
+test_pronunciation2 (__main__.TestModule) ... ok
+test_synonym (__main__.TestModule) ... ok
+test_usageExamples1 (__main__.TestModule) ... ok
+test_usageExamples2 (__main__.TestModule) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 13.713s
+
+OK
+</code></pre>
+
+<h3>
+<a id="known-issues" class="anchor" href="#known-issues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Known Issues</h3>
+
+<ul>
+<li>  When using the method</li>
+</ul>
+
+<pre lang="sourceCode"><code>&gt;&gt;&gt; vb.pronunciation("hippopotamus")
+[{'raw': '(hĭpˌə-pŏtˈə-məs)', 'rawType': 'ahd-legacy', 'seq': 0}, {'raw': 'HH IH2 P AH0 P AA1 T AH0 M AH0 S', 'rawType': 'arpabet', 'seq': 0}]
+&gt;&gt;&gt; type(vb.pronunciation("hippopotamus"))
+&lt;class 'list'&gt;
+&gt;&gt;&gt; json.dumps(vb.pronunciation("hippopotamus"))
+'[{"raw": "(h\\u012dp\\u02cc\\u0259-p\\u014ft\\u02c8\\u0259-m\\u0259s)", "rawType": "ahd-legacy", "seq": 0}, {"raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "rawType": "arpabet", "seq": 0}]'
+&gt;&gt;&gt;
+</code></pre>
+
+<p>You are being returned a <code>list</code> object instead of a <code>JSON</code> object. When
+returning the latter, there are some <code>unicode</code> issues. A fix for this
+will be released soon.</p>
+
+<h3>
+<a id="discuss" class="anchor" href="#discuss" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discuss</h3>
+
+<p>Join us on our <a href="https://gitter.im/prodicus/vocabulary">Gitter channel</a>
+if you want to chat or if you have any questions.</p>
+
+<h3>
+<a id="contributers" class="anchor" href="#contributers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributers</h3>
+
+<ul>
+<li>  A big shout out to all the
+<a href="https://github.com/prodicus/vocabulary/graphs/contributors">contributers</a>
+</li>
+</ul>
+
+<h2>
+<a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<h3>
+<a id="004" class="anchor" href="#004" aria-hidden="true"><span class="octicon octicon-link"></span></a>0.0.4</h3>
+
+<ul>
+<li>  <code>JSON</code> inconsistency fixed for the methods
+
+<ul>
+<li>  <code>Vocabulary.hyphenation()</code>
+</li>
+<li>  <code>Vocabulary.part_of_speech()</code>
+</li>
+<li>  <code>Vocabulary.meaning()</code>
+</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="bugs" class="anchor" href="#bugs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bugs</h2>
+
+<p>Please report the bugs at the <a href="https://github.com/prodicus/vocabulary/issues">issue
+tracker</a></p>
+
+<h2>
+<a id="license-" class="anchor" href="#license-" aria-hidden="true"><span class="octicon octicon-link"></span></a>License :</h2>
+
+<p><a href="http://prodicus.mit-license.org/">MIT License</a> © <a href="http://prodicus.github.com/">Tasdik
+Rahman</a></p>
+
+<p>You can find a copy of the License at <a href="http://prodicus.mit-license.org/">http://prodicus.mit-license.org/</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/prodicus/vocabulary">Vocabulary</a> is maintained by <a href="https://github.com/prodicus">prodicus</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
