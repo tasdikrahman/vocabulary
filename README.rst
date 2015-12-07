@@ -183,6 +183,13 @@ A Simple demonstration of the module
     '[{"text": "a", "seq": 0}, {"text": "maz", "type": "stress", "seq": 1}, {"text": "ing", "seq": 2}]'
     >>>
 
+    ## "Translate"
+    >>> vb.translate("bread", "en","fra")
+    '[{"seq": 0, "text": "pain"}, {"seq": 1, "text": "paner"}, {"seq": 2, "text": "pognon"}, {"seq": 3, "text": "fric"}, {"seq": 4, "text": "bl\\u00e9"}]'
+    >>> vb.translate("goodbye", "en","es")
+    '[{"seq": 0, "text": "hasta luego"}, {"seq": 1, "text": "vaya con Dios"}, {"seq": 2, "text": "despedida"}, {"seq": 3, "text": "adi\\u00f3s"}, {"seq": 4, "text": "vaya con dios"}, {"seq": 5, "text": "hasta la vista"}, {"seq": 6, "text": "nos vemos"}, {"seq": 7, "text": "adios"}, {"seq": 8, "text": "hasta pronto"}]'
+    >>>
+
 Demo
 ~~~~
 
