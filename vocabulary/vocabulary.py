@@ -5,19 +5,19 @@
 The MIT License (MIT)
 Copyright © 2015 Tasdik Rahman
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
-associated documentation files (the “Software”), to deal in the Software without restriction, including 
-without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
-copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+associated documentation files (the “Software”), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
 following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial 
+The above copyright notice and this permission notice shall be included in all copies or substantial
 portions of the Software.
 
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT 
-LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN 
-NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
@@ -65,7 +65,7 @@ class Vocabulary(object):
     def __return_json(url):
         """
         Returns JSON data which is returned by querying the API service
-        Called by 
+        Called by
          - meaning()
          - synonym()
 
@@ -85,9 +85,9 @@ class Vocabulary(object):
         parses the passed "tuc_content" for
          - meanings
          - synonym
-        received by querying the glosbe API 
+        received by querying the glosbe API
 
-        Called by 
+        Called by
          - meaning()
          - synonym()
 
@@ -96,7 +96,7 @@ class Vocabulary(object):
         :returns: returns a list which contains the parsed data from "tuc"
         """
         initial_parsed_content = {}
-        
+
         i = 0
         for content_dict in tuc_content:
             if content_to_be_parsed in content_dict.keys():
@@ -150,7 +150,7 @@ class Vocabulary(object):
         make calls to the glosbe API
 
         :param phrase: word for which meaning is to be found
-        :param source_lang: Defaults to : "en" 
+        :param source_lang: Defaults to : "en"
         :param dest_lang: Defaults to : "en" For eg: "fr" for french
         :returns: returns a json object
         """
@@ -160,11 +160,11 @@ class Vocabulary(object):
 
         if json_obj:
             try:
-                tuc_content = json_obj["tuc"]       ## "tuc_content" is a "list" 
+                tuc_content = json_obj["tuc"]       ## "tuc_content" is a "list"
             except KeyError:
                 return False
             '''get meanings'''
-            meanings_list = Vocabulary.__parse_content(tuc_content, "meanings")     
+            meanings_list = Vocabulary.__parse_content(tuc_content, "meanings")
             # return meanings_list
             return json.dumps(meanings_list)
         else:
@@ -177,8 +177,8 @@ class Vocabulary(object):
         Calls the glosbe API for getting the related synonym
 
         :param phrase:  word for which synonym is to be found
-        :param source_lang: Defaults to : "en" 
-        :param dest_lang: Defaults to : "en" 
+        :param source_lang: Defaults to : "en"
+        :param dest_lang: Defaults to : "en"
         :returns: returns a json object
         """
         base_url = Vocabulary.__get_api_link("glosbe")
@@ -186,7 +186,7 @@ class Vocabulary(object):
         json_obj = Vocabulary.__return_json(url)
         if json_obj:
             try :
-                tuc_content = json_obj["tuc"]       ## "tuc_content" is a "list" 
+                tuc_content = json_obj["tuc"]       ## "tuc_content" is a "list"
             except KeyError:
                 return False
             synonyms_list = Vocabulary.__parse_content(tuc_content, "phrase")
@@ -198,10 +198,40 @@ class Vocabulary(object):
 
         else:
             return False
-    
+
         ## TO-DO:
         ## if this gives me no results, will query "bighugelabs"
-    
+
+    @staticmethod
+    def translate(phrase, source_lang, dest_lang):
+            """
+            Gets the translations for a given word, and returns possibilites as a list
+            Calls the glosbe API for getting the translation
+
+            :param phrase:  word for which translation is being found
+            :param source_lang: Translation from language
+            :param dest_lang: Translation to language
+            :returns: returns a json object
+            """
+            base_url = Vocabulary.__get_api_link("glosbe")
+            url = base_url.format(word=phrase, source_lang=source_lang, dest_lang=dest_lang)
+            json_obj = Vocabulary.__return_json(url)
+            if json_obj:
+                try :
+                    tuc_content = json_obj["tuc"]       ## "tuc_content" is a "list"
+                except KeyError:
+                    return False
+                translations_list = Vocabulary.__parse_content(tuc_content, "phrase")
+                if translations_list:
+                    # return synonyms_list
+                    return json.dumps(translations_list)
+                else:
+                    return False
+            else:
+                return False
+
+
+
     @staticmethod
     def antonym(phrase):
         """
@@ -212,7 +242,7 @@ class Vocabulary(object):
          - "sim" (similar terms)
          - "usr" (user suggestions)
 
-        But currently parsing only the antonym as I have already done 
+        But currently parsing only the antonym as I have already done
         - synonym (using glosbe API)
 
         :param phrase: word for which antonym is to be found
@@ -222,7 +252,7 @@ class Vocabulary(object):
         base_url = Vocabulary.__get_api_link("bighugelabs")
         url = base_url.format(word=phrase)
         json_obj = Vocabulary.__return_json(url)
-        
+
         """The thing here is that, I have no way to know what the keys returned would be,
         so I will use the 'dict.keys()' method to get all the keys first
         """
@@ -234,7 +264,7 @@ class Vocabulary(object):
             ## searching for the key "ant" inside the dictionary which is the value for the particular
             ## key being iterated (one of the "keys" key)
             for key in keys:
-                try: 
+                try:
                     key_value = json_obj[key]
                     value = key_value["ant"]
                     dictionary["text"] = value
@@ -269,12 +299,12 @@ class Vocabulary(object):
         if json_obj:
             part_of_speech = {}
             for content in json_obj:
-                key = content["partOfSpeech"] 
+                key = content["partOfSpeech"]
                 value = content["text"]
                 part_of_speech[key] = value
                 if part_of_speech:
                     ## cleaning "part_of_speech" using "__clean_dict()"
-                    i = 0 
+                    i = 0
                     for key, value in part_of_speech.items():
                         final_list.append({ "seq": i, "text": key, "example:" :value})
                         i += 1
@@ -282,7 +312,7 @@ class Vocabulary(object):
                     # return final_list
                 else:
                     return False
-        else: 
+        else:
             return False
 
     @staticmethod

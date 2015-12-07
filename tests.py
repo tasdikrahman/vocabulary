@@ -59,29 +59,40 @@ class TestModule(unittest.TestCase):
         middle_val = json.loads(result)
         expected_result = json.dumps(middle_val)
         self.assertEqual(current_result, expected_result)
-        
+
     def test_usageExamples2(self):
         current_result = vb.usage_example("lksj") # # for non valid word
         expected_result = False
         self.assertEqual(current_result, expected_result)
-        
+
     def test_pronunciation1(self):
         current_result = vb.pronunciation("hippopotamus") # for valid word
         result = '[{"rawType": "ahd-legacy", "raw": "(hĭpˌə-pŏtˈə-məs)", "seq": 0}, {"rawType": "arpabet", "raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "seq": 0}]'
         expected_result = json.loads(result)
         self.assertEqual(current_result, expected_result)
-        
+
     def test_pronunciation2(self):
         current_result = vb.pronunciation("lksj") # for non valid word
         expected_result = False
         self.assertEqual(current_result, expected_result)
-    
+
     def test_hyphenation(self):
         current_result = vb.hyphenation("hippopotamus")
         result = '[{"seq": 0, "text": "hip", "type": "secondary stress"}, {"seq": 1, "text": "po"}, {"seq": 2, "text": "pot", "type": "stress"}, {"seq": 3, "text": "a"}, {"seq": 4, "text": "mus"}]'
         middle_val = json.loads(result)
         expected_result = json.dumps(middle_val)
         self.assertEqual(current_result, expected_result)
+
+    def test_translate(self):
+        current_result = vb.translate("hummus", "en", "es")
+        result = '[{"text": "hummus", "seq": 0}]'
+        middle_val = json.loads(result)
+        expected_result = json.dumps(middle_val)
+        self.assertEqual(current_result, expected_result)
+
+    def test_translate2(self):
+        current_result = vb.translate("asldkfj", "en", "ru")
+        self.assertEqual(current_result, False)
 
 if __name__ == "__main__":
     unittest.main()
