@@ -25,13 +25,13 @@ import json
 import requests
 
 
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 __author__ = "Tasdik Rahman"
 
 
 class Vocabulary(object):
     """
-    |      Function     | Public methods   |
+    |  Private methods  | Public methods   |
     |:-----------------:|------------------|
     |  __get_api_link() | meaning()        |
     | __return_json()   | synonym()        |
@@ -40,6 +40,7 @@ class Vocabulary(object):
     |                   | hyphenation()    |
     |                   | part_of_speech() |
     |                   | pronunciation()  |
+    |                   | translate()      |
     """
     @staticmethod
     def __get_api_link(api):

@@ -27,6 +27,7 @@ For a given word, using ``Vocabulary``, you can get it's
 
 -  **Part of speech** : whether the word is a ``noun``, ``interjection``
    or an ``adverb`` et el
+-  **Translate** : Translate a phrase from a source language to the desired language.
 -  **Usage example** : a quick example on how to use the word in a
    sentence
 -  **Pronunciation**
@@ -269,19 +270,19 @@ Or, if ``virtualenv`` is not installed on your system:
 
     (develop) $ ./tests.py -v
 
-If everything is running fine, integrate your feature 
+Conform to [PEP8](https://www.python.org/dev/peps/pep-0008/) and if everything is running fine, integrate your feature 
 
 6. Push to the branch (``$ git push origin my-new-awesome-feature``)
 
 7. Create new Pull Request
 
-Hack away!
+Hack away! 
 
 To do
 ~~~~~
 
--  Add translate module
--  Add an option like `json=False` or `json=True` where the former returns a list object
+-  [X] Add translate module
+-  []  Add an option like `JSON=False` or `JSON=True` where the former returns a list object
 
 Tests
 ~~~~~
@@ -302,13 +303,16 @@ Running the test cases
     test_pronunciation1 (__main__.TestModule) ... ok
     test_pronunciation2 (__main__.TestModule) ... ok
     test_synonym (__main__.TestModule) ... ok
+    test_translate (__main__.TestModule) ... ok
+    test_translate2 (__main__.TestModule) ... ok
     test_usageExamples1 (__main__.TestModule) ... ok
     test_usageExamples2 (__main__.TestModule) ... ok
 
     ----------------------------------------------------------------------
-    Ran 11 tests in 13.713s
+    Ran 13 tests in 12.898s
 
     OK
+
 
 
 Known Issues
@@ -339,6 +343,7 @@ if you want to chat or if you have any questions.
 Contributers
 ~~~~~~~~~~~~
 
+-  Thanks to [Anton Relin](https://github.com/relisher) for adding the `translate()` module 
 -  A big shout out to all the `contributers <https://github.com/prodicus/vocabulary/graphs/contributors>`__
 
 Changelog
@@ -352,6 +357,13 @@ Changelog
    -  ``Vocabulary.hyphenation()``
    -  ``Vocabulary.part_of_speech()``
    -  ``Vocabulary.meaning()``
+
+0.0.5
+~~~~~
+
+- Added `translate` module
+- Improved Documentation
+- Minor bug fixes
 
 Bugs
 ----

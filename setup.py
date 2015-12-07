@@ -19,7 +19,7 @@ finally:
 
 setup(
   name = 'Vocabulary',
-  version = '0.0.4',
+  version = '0.0.5',
   author = 'Tasdik Rahman',
   author_email = 'tasdik95@gmail.com', 
   description = "Module to get meaning, synonym, antonym, part_of_speech, usage_example, pronunciation and hyphenation for a given word",
@@ -28,12 +28,11 @@ setup(
   license = 'MIT',
   install_requires = [
     "requests==2.8.1",
-    "wheel==0.26.0"
   ],
   ### adding package data to it 
   packages=find_packages(exclude=['contrib', 'docs']),
   ###
-  download_url = 'https://github.com/prodicus/vocabulary/tarball/0.0.4', 
+  download_url = 'https://github.com/prodicus/vocabulary/tarball/0.0.5', 
   classifiers = [
       'Intended Audience :: Developers',
       'License :: OSI Approved :: MIT License',
