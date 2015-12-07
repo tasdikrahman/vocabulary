@@ -197,27 +197,24 @@ If you need to see the usage for any of the methods, do a
 .. code:: python
 
     >>> from vocabulary import Vocabulary as vb
-    >>> help(vb.meaning)
-    Help on function meaning in module vocabulary.vocabulary:
+    >>> help(vb.translate)
+    Help on function translate in module vocabulary.vocabulary:
 
-    meaning(phrase, source_lang='en', dest_lang='en')
-        make calls to the
-        - glosbe API(default choice)
-        - Wordnik API 
+    translate(phrase, source_lang, dest_lang)
+        Gets the translations for a given word, and returns possibilites as a list
+        Calls the glosbe API for getting the translation
         
-        Wordnik's API gives less results so not Using it here for getting the meanings
+        <source_lang> and <dest_lang> languages should be specifed in 3-letter ISO 639-3 format,
+        although many 2-letter codes (en, de, fr) will work.
         
-        params: 
-        =======
-        source_lang, dest_lang (both default to "en" if nothing is specified)
+        See http://en.wikipedia.org/wiki/List_of_ISO_639-3_codes for full list.
         
-        Usage: 
-        ======
-        >>> from vocabulary import Vocabulary as vb
-        >>> vb.meaning("levitate")
-        '[{"text": "(intransitive) Be suspended in the air, as if in defiance of gravity.", "seq": 0}, {"text": "(transitive) To cause to rise in the air and float, as if in defiance of gravity.", "seq": 1}]'
-        >>>
+        :param phrase:  word for which translation is being found
+        :param source_lang: Translation from language
+        :param dest_lang: Translation to language
+        :returns: returns a json object
     (END)
+
 
 and so on for other functions
 
@@ -270,7 +267,7 @@ Or, if ``virtualenv`` is not installed on your system:
 
     (develop) $ ./tests.py -v
 
-Conform to [PEP8](https://www.python.org/dev/peps/pep-0008/) and if everything is running fine, integrate your feature 
+Conform to `PEP8 <https://www.python.org/dev/peps/pep-0008/>`__ and if everything is running fine, integrate your feature 
 
 6. Push to the branch (``$ git push origin my-new-awesome-feature``)
 
@@ -343,7 +340,7 @@ if you want to chat or if you have any questions.
 Contributers
 ~~~~~~~~~~~~
 
--  Thanks to [Anton Relin](https://github.com/relisher) for adding the `translate()` module 
+-  Thanks to `Anton Relin <https://github.com/relisher>`__ for adding the `translate()` module 
 -  A big shout out to all the `contributers <https://github.com/prodicus/vocabulary/graphs/contributors>`__
 
 Changelog

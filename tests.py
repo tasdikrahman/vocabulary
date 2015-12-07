@@ -83,7 +83,7 @@ class TestModule(unittest.TestCase):
         expected_result = json.dumps(middle_val)
         self.assertEqual(current_result, expected_result)
 
-    def test_translate(self):
+    def test_translate1(self):
         current_result = vb.translate("hummus", "en", "es")
         result = '[{"text": "hummus", "seq": 0}]'
         middle_val = json.loads(result)
