@@ -4,7 +4,7 @@
 Vocabulary
 ==========
 
-|PyPI version| |License| |Python Versions| |Build Status| |Gitter chat| |Bitdeli Badge|
+|PyPI version| |License| |Python Versions| |Build Status| |Requirements Status| |Gitter chat| 
 
 A dictionary magician in the form of a module!
 
@@ -382,6 +382,8 @@ License :
 
 You can find a copy of the License at http://prodicus.mit-license.org/
 
+|Bitdeli Badge|
+
 .. |PyPI version| image:: https://img.shields.io/pypi/v/Vocabulary.svg
    :target: https://img.shields.io/pypi/v/Vocabulary.svg
 .. |License| image:: https://img.shields.io/pypi/l/vocabulary.svg
@@ -393,3 +395,5 @@ You can find a copy of the License at http://prodicus.mit-license.org/
    :target: https://gitter.im/prodicus/vocabulary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 .. |Bitdeli Badge| image:: https://d2weczhvl823v0.cloudfront.net/prodicus/vocabulary/trend.png
    :target: https://bitdeli.com/free%20Bitdeli%20Badge
+.. |Requirements Status| image:: https://requires.io/github/prodicus/vocabulary/requirements.svg?branch=master
+   :target: https://requires.io/github/prodicus/vocabulary/requirements/?branch=master
