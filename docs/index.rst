@@ -19,6 +19,7 @@ Contents:
    wordnetcomparison
    installation
    usage
+   help
    contributing
    changelog   
    knownissues

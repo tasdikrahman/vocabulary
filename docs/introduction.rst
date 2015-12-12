@@ -30,3 +30,14 @@ Features
 
    -  both, ``python2.*`` and ``python3.*``
    -  Works on Mac, Linux and Windows
+
+How does it work
+================
+
+Under the hood, it makes use of 4 awesome API's to give you consistent
+results. The API's being
+
+-  Wordnik
+-  Glosbe
+-  BighugeLabs
+-  Urbandict
