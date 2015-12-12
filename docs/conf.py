@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # vocabulary documentation build configuration file, created by
-# sphinx-quickstart on Sat Dec 12 06:43:40 2015.
+# sphinx-quickstart on Sat Dec 12 08:15:29 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -33,6 +33,7 @@ import shlex
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.todo',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
 ]
@@ -80,7 +81,7 @@ language = None
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = []
+exclude_patterns = ['_build']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -107,7 +108,7 @@ pygments_style = 'sphinx'
 #keep_warnings = False
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = False
+todo_include_todos = True
 
 
 # -- Options for HTML output ----------------------------------------------
