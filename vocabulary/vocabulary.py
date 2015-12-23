@@ -23,11 +23,18 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import json
 import requests
+import contextlib
 
 
 __version__ = '0.0.5'
 __author__ = "Tasdik Rahman"
 
+
+@contextlib.contextmanager
+def try_URL(message='Connection Lost'):
+    try: yield
+    except requests.exceptions.ConnectionError:
+        print(message)
 
 class Vocabulary(object):
     """
@@ -42,6 +49,9 @@ class Vocabulary(object):
     |                   | pronunciation()  |
     |                   | translate()      |
     """
+
+
+
     @staticmethod
     def __get_api_link(api):
         """
@@ -73,12 +83,13 @@ class Vocabulary(object):
         :param url: the complete formatted url which is then queried using requests
         :returns: json content being fed by the API
         """
-        response = requests.get(url)
-        if response.status_code == 200:
-            json_obj = response.json()
-            return json_obj
-        else:
-            return False
+        with try_URL():
+            response = requests.get(url)
+            if response.status_code == 200:
+                json_obj = response.json()
+                return json_obj
+            else:
+                return False
 
     @staticmethod
     def __parse_content(tuc_content, content_to_be_parsed):
