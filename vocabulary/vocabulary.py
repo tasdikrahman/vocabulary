@@ -153,7 +153,7 @@ class Vocabulary(object):
         :param phrase: word for which meaning is to be found
         :param source_lang: Defaults to : "en"
         :param dest_lang: Defaults to : "en" For eg: "fr" for french
-        :returns: returns a json object
+        :returns: returns a json object as str, False if invalid phrase
         """
         base_url = Vocabulary.__get_api_link("glosbe")
         url = base_url.format(word=phrase, source_lang=source_lang, dest_lang=dest_lang)
@@ -180,7 +180,7 @@ class Vocabulary(object):
         :param phrase:  word for which synonym is to be found
         :param source_lang: Defaults to : "en"
         :param dest_lang: Defaults to : "en"
-        :returns: returns a json object
+        :returns: returns a json object as str, False if invalid phrase
         """
         base_url = Vocabulary.__get_api_link("glosbe")
         url = base_url.format(word=phrase, source_lang=source_lang, dest_lang=dest_lang)
@@ -217,7 +217,7 @@ class Vocabulary(object):
             :param phrase:  word for which translation is being found
             :param source_lang: Translation from language
             :param dest_lang: Translation to language
-            :returns: returns a json object
+            :returns: returns a json object as str, False if invalid phrase
             """
             base_url = Vocabulary.__get_api_link("glosbe")
             url = base_url.format(word=phrase, source_lang=source_lang, dest_lang=dest_lang)
@@ -294,7 +294,7 @@ class Vocabulary(object):
         querrying Wordnik's API for knowing whether the word is a noun, adjective and the like
 
         :params phrase: word for which part_of_speech is to be found
-        :returns: returns a json object
+        :returns: returns a json object as str, False if invalid phrase
         """
         ## We get a list object as a return value from the Wordnik API
         base_url = Vocabulary.__get_api_link("wordnik")
@@ -326,7 +326,7 @@ class Vocabulary(object):
         """Takes the source phrase and queries it to the urbandictionary API
 
         :params phrase: word for which usage_example is to be found
-        :returns: returns a json object
+        :returns: returns a json object as str, False if invalid phrase
         """
         base_url = Vocabulary.__get_api_link("urbandict")
         url = base_url.format(action="define", word=phrase)
@@ -352,7 +352,7 @@ class Vocabulary(object):
         Gets the pronunciation from the Wordnik API
 
         :params phrase: word for which pronunciation is to be found
-        :returns: returns a list object
+        :returns: returns a list object, False if invalid phrase
         """
         base_url = Vocabulary.__get_api_link("wordnik")
         url = base_url.format(word=phrase, action="pronunciations")
@@ -372,7 +372,7 @@ class Vocabulary(object):
         Returns back the stress points in the "phrase" passed
 
         :param phrase: word for which hyphenation is to be found
-        :returns: returns a json object
+        :returns: returns a json object as str, False if invalid phrase
         """
         base_url = Vocabulary.__get_api_link("wordnik")
         url = base_url.format(word=phrase, action="hyphenation")
