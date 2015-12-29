@@ -27,7 +27,7 @@ setup(
   url = 'https://github.com/prodicus/vocabulary', 
   license = 'MIT',
   install_requires = [
-    "requests==2.8.1",
+    "requests==2.9.1",
   ],
   ### adding package data to it 
   packages=find_packages(exclude=['contrib', 'docs']),
