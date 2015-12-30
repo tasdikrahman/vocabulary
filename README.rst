@@ -122,7 +122,7 @@ Option 2: Installing from source
 Demo
 ~~~~
 
-.. figure:: https://raw.githubusercontent.com/prodicus/prodicus.github.io/master/images/vocabulary.gif
+.. figure:: https://raw.githubusercontent.com/prodicus/vocabulary/usage.gif
    :alt: Demo link
 
 
