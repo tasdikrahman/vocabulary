@@ -126,10 +126,10 @@ Demo
    :alt: Demo link
 
 
-Usage
------
+Documentation
+-------------
 
-For a detailed usage example, refer the `docs <http://vocabulary.readthedocs.org/en/latest/>`__
+For a detailed usage example, refer the `documentation <http://vocabulary.readthedocs.org/en/latest/>`__
 
 Contributing
 ------------
