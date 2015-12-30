@@ -122,7 +122,7 @@ Option 2: Installing from source
 Demo
 ~~~~
 
-.. figure:: https://raw.githubusercontent.com/prodicus/vocabulary/usage.gif
+.. figure:: https://raw.githubusercontent.com/prodicus/vocabulary/master/usage.gif
    :alt: Demo link
 
 
@@ -146,7 +146,7 @@ if you want to chat or if you have any questions.
 Contributers
 ~~~~~~~~~~~~
 
--  Thanks to `Anton Relin <https://github.com/relisher>`__ for adding the `translate()` module 
+-  Thanks to `Anton Relin <https://github.com/relisher>`__ for adding the ``translate()`` module 
 -  A big shout out to all the `contributers <https://github.com/prodicus/vocabulary/graphs/contributors>`__
 
 
