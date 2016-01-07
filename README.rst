@@ -129,7 +129,7 @@ Demo
 Documentation
 -------------
 
-For a detailed usage example, refer the `documentation <http://vocabulary.readthedocs.org/en/latest/>`__
+For a detailed usage example, refer the `documentation at Read the Docs <http://vocabulary.readthedocs.org/en/latest/>`__
 
 Contributing
 ------------
@@ -182,7 +182,7 @@ this will be released soon.
 License :
 ---------
 
-`MIT License <http://prodicus.mit-license.org/>`__ © `Tasdik Rahman <http://prodicus.github.com/>`__
+`MIT License <http://prodicus.mit-license.org/>`__ © `Tasdik Rahman <http://tasdikrahman.me/>`__
 
 You can find a copy of the License at http://prodicus.mit-license.org/
 
@@ -194,7 +194,7 @@ You can find a copy of the License at http://prodicus.mit-license.org/
    :target: https://img.shields.io/pypi/l/vocabulary.svg
 .. |Python Versions| image:: https://img.shields.io/pypi/pyversions/Vocabulary.svg
 .. |Build Status| image:: https://travis-ci.org/prodicus/vocabulary.svg?branch=master
-.. |Gitter chat| image:: https://badges.gitter.im/Join%20Chat.svg
+.. |Gitter chat| image:: https://img.shields.io/gitter/room/gitterHQ/gitter.svg
    :alt: Join the chat at https://gitter.im/prodicus/vocabulary
    :target: https://gitter.im/prodicus/vocabulary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 .. |Bitdeli Badge| image:: https://d2weczhvl823v0.cloudfront.net/prodicus/vocabulary/trend.png
