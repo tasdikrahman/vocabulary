@@ -80,7 +80,22 @@ Let's say you want to find out the synonyms for the word ``car``.
 
     >>> from vocabulary import Vocabulary as vb
     >>> vb.synonym("car")
-    '[{"seq": 0, "text": "automotive"}, {"seq": 1, "text": "motor"}, {"seq": 2, "text": "wagon"}, {"seq": 3, "text": "cart"}, {"seq": 4, "text": "automobile"}]'
+    '[{
+      "seq": 0,
+      "text": "automobile"
+    }, {
+      "seq": 1,
+      "text": "cart"
+    }, {
+      "seq": 2,
+      "text": "automotive"
+    }, {
+      "seq": 3,
+      "text": "wagon"
+    }, {
+      "seq": 4,
+      "text": "motor"
+    }]'
     >>> ## load the json data
     >>> car_synonyms = json.loads(vb.synonym("car"))
     >>> type(car_synonyms)
@@ -168,7 +183,22 @@ Known Issues
 .. code:: python
 
     >>> vb.pronunciation("hippopotamus")
-    [{'raw': '(hĭpˌə-pŏtˈə-məs)', 'rawType': 'ahd-legacy', 'seq': 0}, {'raw': 'HH IH2 P AH0 P AA1 T AH0 M AH0 S', 'rawType': 'arpabet', 'seq': 0}]
+    [{
+      "seq": 0,
+      "text": "automotive"
+    }, {
+      "seq": 1,
+      "text": "motor"
+    }, {
+      "seq": 2,
+      "text": "wagon"
+    }, {
+      "seq": 3,
+      "text": "cart"
+    }, {
+      "seq": 4,
+      "text": "automobile"
+    }]
     >>> type(vb.pronunciation("hippopotamus"))
     <class 'list'>
     >>> json.dumps(vb.pronunciation("hippopotamus"))
@@ -178,6 +208,25 @@ Known Issues
 You are being returned a ``list`` object instead of a ``JSON`` object.
 When returning the latter, there are some ``unicode`` issues. A fix for
 this will be released soon.
+
+I may suggest `python-ftfy <https://github.com/LuminosoInsight/python-ftfy>`__ which can help you in this matter.
+
+**Note**:
+
+If you are on **python3**, this problem can be overcome by doing a 
+
+.. code:: python
+    
+   >>> json_resp = vb.pronunciation("hippopotamus")
+   >>> json_resp
+   [{'seq': 0, 'raw': '(hĭpˌə-pŏtˈə-məs)', 'rawType': 'ahd-legacy'}, {'seq': 0, 'raw': 'HH IH2 P AH0 P AA1 T AH0 M AH0 S', 'rawType': 'arpabet'}]
+   >>> data = json.loads(json.dumps(json_resp, ensure_ascii=False))
+   >>> data
+   [{'seq': 0, 'raw': '(hĭpˌə-pŏtˈə-məs)', 'rawType': 'ahd-legacy'}, {'seq': 0, 'raw': 'HH IH2 P AH0 P AA1 T AH0 M AH0 S', 'rawType': 'arpabet'}]
+   >>> data[0]['raw']
+   '(hĭpˌə-pŏtˈə-məs)'
+   >>> 
+
 
 License :
 ---------
