@@ -178,7 +178,7 @@ tracker <https://github.com/prodicus/vocabulary/issues>`__
 Known Issues
 ~~~~~~~~~~~~
 
--  When using the method
+-  In **python2**, when using the method **Vocabulary.pronunciation()** 
 
 .. code:: python
 
@@ -210,22 +210,6 @@ When returning the latter, there are some ``unicode`` issues. A fix for
 this will be released soon.
 
 I may suggest `python-ftfy <https://github.com/LuminosoInsight/python-ftfy>`__ which can help you in this matter.
-
-**Note**:
-
-If you are on **python3**, this problem can be overcome by doing a 
-
-.. code:: python
-    
-   >>> json_resp = vb.pronunciation("hippopotamus")
-   >>> json_resp
-   [{'seq': 0, 'raw': '(hĭpˌə-pŏtˈə-məs)', 'rawType': 'ahd-legacy'}, {'seq': 0, 'raw': 'HH IH2 P AH0 P AA1 T AH0 M AH0 S', 'rawType': 'arpabet'}]
-   >>> data = json.loads(json.dumps(json_resp, ensure_ascii=False))
-   >>> data
-   [{'seq': 0, 'raw': '(hĭpˌə-pŏtˈə-məs)', 'rawType': 'ahd-legacy'}, {'seq': 0, 'raw': 'HH IH2 P AH0 P AA1 T AH0 M AH0 S', 'rawType': 'arpabet'}]
-   >>> data[0]['raw']
-   '(hĭpˌə-pŏtˈə-məs)'
-   >>> 
 
 
 License :

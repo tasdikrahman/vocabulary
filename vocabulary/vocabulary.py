@@ -24,6 +24,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import json
 import requests
 import contextlib
+import sys
 
 
 __version__ = '0.0.5'
@@ -372,8 +373,12 @@ class Vocabulary(object):
             '''
             Refer : http://stackoverflow.com/questions/18337407/saving-utf-8-texts-in-json-dumps-as-utf8-not-as-u-escape-sequence
             '''
-            # return json.dumps(json_obj, ensure_ascii=False)
-            return json_obj
+            ## TODO: Fix the unicode issue mentioned in 
+            ## https://github.com/prodicus/vocabulary#181known-issues
+            if sys.version_info[:2] <= (2, 7):  ## python2
+                return json_obj
+            else:   ## python3
+                return json.loads(json.dumps(json_obj, ensure_ascii=False))
         else:
             return False
 
