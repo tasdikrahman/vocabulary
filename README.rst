@@ -174,6 +174,13 @@ Bugs
 Please report the bugs at the `issue
 tracker <https://github.com/prodicus/vocabulary/issues>`__
 
+Similar
+-------
+
+Other similar software inspired by `Vocabulary <https://github.com/prodicus/vocabulary>`__
+
+-  `Vocabulary <https://github.com/karan/vocabulary>`__ : The ``Go lang`` port of this ``python`` counterpart
+-  `woordy <https://github.com/alephmelo/woordy>`__ : Gives back word translations
 
 Known Issues
 ~~~~~~~~~~~~
