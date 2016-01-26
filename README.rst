@@ -181,6 +181,7 @@ Other similar software inspired by `Vocabulary <https://github.com/prodicus/voca
 
 -  `Vocabulary <https://github.com/karan/vocabulary>`__ : The ``Go lang`` port of this ``python`` counterpart
 -  `woordy <https://github.com/alephmelo/woordy>`__ : Gives back word translations
+-  `guile-words <http://pasoev.github.io/words/>`__ : The ``Guile Scheme`` port of this ``python`` counterpart
 
 Known Issues
 ~~~~~~~~~~~~
