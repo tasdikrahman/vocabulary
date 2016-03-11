@@ -17,6 +17,7 @@ A dictionary magician in the form of a module!
 
 What is it
 ----------
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 For a given word, using ``Vocabulary``, you can get it's
 
@@ -33,6 +34,7 @@ For a given word, using ``Vocabulary``, you can get it's
 
 Features
 --------
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 -  Written in uncomplicated ``Python``
 -  Returns ``JSON`` objects
@@ -51,12 +53,14 @@ Features
 
 Why should I use Vocabulary
 ---------------------------
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 ``Wordnet`` is a great resource. No doubt about it! So why should you
 use ``Vocabulary`` when we already have ``Wordnet`` out there?
 
 Wordnet Comparison
 ~~~~~~~~~~~~~~~~~~
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 Let's say you want to find out the synonyms for the word ``car``.
 
@@ -108,6 +112,7 @@ You can go on comparing for the other methods too.
 
 Installation
 ------------
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 Option 1: installing through `pip <https://pypi.python.org/pypi/vocabulary>`__ (Suggested way)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -123,8 +128,8 @@ If you are behind a proxy
 **Note:** If you get ``command not found`` then
 ``$ sudo apt-get install python-pip`` should fix that
 
-Option 2: Installing from source
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Option 2: Installing from source (Only if you must)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
@@ -136,6 +141,7 @@ Option 2: Installing from source
 
 Demo
 ~~~~
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 .. figure:: https://raw.githubusercontent.com/prodicus/vocabulary/master/assets/usage.gif
    :alt: Demo link
@@ -143,39 +149,47 @@ Demo
 
 Documentation
 -------------
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 For a detailed usage example, refer the `documentation at Read the Docs <http://vocabulary.readthedocs.org/en/latest/>`__
 
 Contributing
 ------------
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 Please refer `Contributing page for details <https://github.com/prodicus/vocabulary/blob/master/CONTRIBUTING.rst>`__
 
 
 Discuss
 ~~~~~~~
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 Join us on our `Gitter channel <https://gitter.im/prodicus/vocabulary>`__
 if you want to chat or if you have any questions in your mind.
 
 Contributers
 ~~~~~~~~~~~~
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 -  Thanks to `Anton Relin <https://github.com/relisher>`__ for adding the `translate <https://github.com/prodicus/vocabulary/blob/master/vocabulary/vocabulary.py#L218>`__ module.
 - And a big shout out to all the `contributers <https://github.com/prodicus/vocabulary/graphs/contributors>`__ for their contributions
 
 Changelog
 ---------
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+
 Please refer `Changelog page for details <https://github.com/prodicus/vocabulary/blob/master/CHANGELOG.rst>`__
 
 Bugs
 ----
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 Please report the bugs at the `issue
 tracker <https://github.com/prodicus/vocabulary/issues>`__
 
 Similar
 -------
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 Other similar software inspired by `Vocabulary <https://github.com/prodicus/vocabulary>`__
 
@@ -185,6 +199,7 @@ Other similar software inspired by `Vocabulary <https://github.com/prodicus/voca
 
 Known Issues
 ~~~~~~~~~~~~
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 -  In **python2**, when using the method **Vocabulary.pronunciation()** 
 
@@ -222,8 +237,9 @@ I may suggest `python-ftfy <https://github.com/LuminosoInsight/python-ftfy>`__ w
 
 License :
 ---------
+`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
-`MIT License <http://prodicus.mit-license.org/>`__ © `Tasdik Rahman <http://tasdikrahman.me/>`__
+Built with ♥ by `Tasdik Rahman <http://tasdikrahman.me/>`__ under the `MIT License <http://prodicus.mit-license.org/>`__ © 
 
 You can find a copy of the License at http://prodicus.mit-license.org/
 
