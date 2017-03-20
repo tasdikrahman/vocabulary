@@ -10,6 +10,10 @@ A dictionary magician in the form of a module!
 
 :Author: Tasdik Rahman
 
+|Paypal badge|
+
+Some of my projects are also on `Gratipay <https://gratipay.com/~prodicus/>`__
+
 .. contents::
     :backlinks: none
 
@@ -258,3 +262,5 @@ You can find a copy of the License at http://prodicus.mit-license.org/
    :target: https://bitdeli.com/free%20Bitdeli%20Badge
 .. |Requirements Status| image:: https://requires.io/github/prodicus/vocabulary/requirements.svg?branch=master
    :target: https://requires.io/github/prodicus/vocabulary/requirements/?branch=master
+.. |Paypal badge| image:: https://tuxtricks.files.wordpress.com/2016/12/donate.png
+   :target: https://www.paypal.me/tasdikrahman

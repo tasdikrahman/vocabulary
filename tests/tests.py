@@ -16,7 +16,7 @@ class TestModule(unittest.TestCase):
 
     def test_meaning_valid_phrase(self):
         current_result = vb.meaning("humming")
-        result = '[{"seq": 0, "text": "Present participle of hum."}]'
+        result = '[{"text": "The sound of something that hums; a hum.", "seq": 0}, {"text": "<i>present participle of [i]hum</i>[/i]", "seq": 1}, {"text": "the act of singing with closed lips", "seq": 2}, {"text": "a humming noise; &quot;the hum of distant traffic&quot;", "seq": 3}, {"text": "Present participle of hum.", "seq": 4}]'
         middle_val = json.loads(result)
         expected_result = json.dumps(middle_val)
         if sys.version_info[:2] <= (2, 7):  ## python 2 
@@ -39,8 +39,8 @@ class TestModule(unittest.TestCase):
         self.assertFalse(current_result)
         
     def test_synonym_valid_phrase(self):
-        current_result = vb.synonym("repudiate")
-        result = '[{"seq": 0, "text": "deny"}]'
+        current_result = vb.synonym("angry")
+        result = '[{"text": "get angry", "seq": 0}, {"text": "mad", "seq": 1}]'
         middle_val = json.loads(result)
         expected_result = json.dumps(middle_val)
         if sys.version_info[:2] <= (2, 7):
