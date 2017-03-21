@@ -12,6 +12,8 @@ A dictionary magician in the form of a module!
 
 |Paypal badge|
 
+|Instamojo|
+
 Some of my projects are also on `Gratipay <https://gratipay.com/~prodicus/>`__
 
 .. contents::
@@ -264,3 +266,5 @@ You can find a copy of the License at http://prodicus.mit-license.org/
    :target: https://requires.io/github/prodicus/vocabulary/requirements/?branch=master
 .. |Paypal badge| image:: https://tuxtricks.files.wordpress.com/2016/12/donate.png
    :target: https://www.paypal.me/tasdikrahman
+.. |Instamojo| image:: https://www.instamojo.com/blog/wp-content/uploads/2017/01/instamojo-91.png
+   :target: https://www.instamojo.com/@tasdikrahman
