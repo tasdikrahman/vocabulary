@@ -52,15 +52,12 @@ class Response(object):
             for key, value in enumerate(temp_data):
                 data[key] = value
 
-        # print("\nThe data is: ", data)
         data.pop('seq', None)
         for index, item in data.items():
-            # print(index, item, data, '\n')
             values = item
             if isinstance(item, list) or isinstance(item, dict):
                 values = self.__respond_with_dict(item)
 
-            # print("\nThe item is:", values)
             if isinstance(values, dict) and len(values) == 1:
                 (key, values), = values.items()
             response[index] = values
@@ -84,7 +81,6 @@ class Response(object):
             if isinstance(item, list) or isinstance(item, dict):
                 values = self.__respond_with_list(item)
 
-            # print "\nThe values: ", values
             if isinstance(values, list) and len(values) == 1:
                 response.extend(values)
             else:
