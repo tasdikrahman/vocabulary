@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from vocabulary import Vocabulary as vb
+from vocabulary.responselib import Response as rp
 import unittest
 import sys
 try:
@@ -152,6 +153,33 @@ class TestModule(unittest.TestCase):
     def test_translate_not_valid_phrase(self):
         current_result = vb.translate("asldkfj", "en", "ru")
         self.assertEqual(current_result, False)
+
+    def test_respond_as_dict_1(self):
+        data = json.loads('[{"text": "hummus", "seq": 0}]')
+        expected_result = {0: {"text": "humus"}}
+        result = rp().respond(data, 'dict')
+        if sys.version_info[:2] <= (2, 7):
+            self.assertItemsEqual(expected_result, result)
+        else:
+            self.assertCountEqual(expected_result, result)
+
+    def test_respond_as_dict_2(self):
+        data = json.loads('[{"text": "hummus", "seq": 0},{"text": "hummusy", "seq": 1}]')
+        expected_result = {0: {"text": "humus"}, 1: {"text": "humusy"}}
+        result = rp().respond(data, 'dict')
+        if sys.version_info[:2] <= (2, 7):
+            self.assertItemsEqual(expected_result, result)
+        else:
+            self.assertCountEqual(expected_result, result)
+
+    def test_respond_as_dict_2(self):
+        data = json.loads('{"text": ["hummus"]}')
+        expected_result = {"text" : "hate"}
+        result = rp().respond(data, 'dict')
+        if sys.version_info[:2] <= (2, 7):
+            self.assertItemsEqual(expected_result, result)
+        else:
+            self.assertCountEqual(expected_result, result)
 
 if __name__ == "__main__":
     unittest.main()
