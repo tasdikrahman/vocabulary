@@ -22,6 +22,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 
+import json
+
 __version__ = '0.0.1'
 __author__ = "Chizzy Alaedu"
 
@@ -38,12 +40,45 @@ class Response(object):
 
 
     def __respond_with_dict(self, data):
-        pass
+        """
+        Builds a python dictionary from a json object
+
+        :param data: the json object
+        :returns: a nested dictionary
+        """
+        response = {}
+        if isinstance(data, list):
+            temp_data, data = data, {}
+            for key, value in enumerate(temp_data):
+                data[key] = value
+
+        # print("\nThe data is: ", data)
+        data.pop('seq', None)
+        for index, item in data.items():
+            # print(index, item, data, '\n')
+            values = item
+            if isinstance(item, list) or isinstance(item, dict):
+                values = self.__respond_with_dict(item)
+
+            # print("\nThe item is:", values)
+            if isinstance(item, dict) and len(values) == 1:
+                (key, values), = values.items()
+            response[index] = values
+
+        return response
 
     def __respond_with_list(self, data):
         pass
 
     def respond(self, data, format='json'):
+        """
+        Converts a json object to a python datastructure based on
+        specified format
+
+        :param data: the json object
+        :param format: python datastructure type. Defaults to: "json"
+        :returns: a python specified object
+        """
         dispatchers = {
             "dict" : self.__respond_with_dict,
             "list" : self.__respond_with_list
