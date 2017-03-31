@@ -61,7 +61,7 @@ class Response(object):
                 values = self.__respond_with_dict(item)
 
             # print("\nThe item is:", values)
-            if isinstance(item, dict) and len(values) == 1:
+            if isinstance(values, dict) and len(values) == 1:
                 (key, values), = values.items()
             response[index] = values
 
@@ -74,7 +74,23 @@ class Response(object):
         :param data: the json object
         :returns: a nested list
         """
-        pass
+        response = []
+        if isinstance(data, dict):
+            data.pop('seq', None)
+            data = list(data.values())
+
+        for item in data:
+            values = item
+            if isinstance(item, list) or isinstance(item, dict):
+                values = self.__respond_with_list(item)
+
+            # print "\nThe values: ", values
+            if isinstance(values, list) and len(values) == 1:
+                response.extend(values)
+            else:
+                response.append(values)
+
+        return response
 
     def respond(self, data, format='json'):
         """
