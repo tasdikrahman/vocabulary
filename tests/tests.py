@@ -20,14 +20,14 @@ class TestModule(unittest.TestCase):
         result = '[{"text": "The sound of something that hums; a hum.", "seq": 0}, {"text": "<i>present participle of [i]hum</i>[/i]", "seq": 1}, {"text": "the act of singing with closed lips", "seq": 2}, {"text": "a humming noise; &quot;the hum of distant traffic&quot;", "seq": 3}, {"text": "Present participle of hum.", "seq": 4}]'
         middle_val = json.loads(result)
         expected_result = json.dumps(middle_val)
-        if sys.version_info[:2] <= (2, 7):  ## python 2 
+        if sys.version_info[:2] <= (2, 7):  ## python 2
             self.assertItemsEqual(current_result, expected_result)
         else:       # python 3
             """
-            assertItemsEqual() was renamed to assertCountEqual() 
-            Why I am not using assertEqual() here? 
+            assertItemsEqual() was renamed to assertCountEqual()
+            Why I am not using assertEqual() here?
 
-            Reference: 
+            Reference:
             - http://stackoverflow.com/a/7473137/3834059
             - https://docs.python.org/2/library/unittest.html#unittest.TestCase.assertItemsEqual
             - https://docs.python.org/3/library/unittest.html?highlight=assertcountequal#unittest.TestCase.assertCountEqual
@@ -38,7 +38,7 @@ class TestModule(unittest.TestCase):
     def test_meaning_not_valid_phrase(self):
         current_result = vb.meaning("sxsw")
         self.assertFalse(current_result)
-        
+
     def test_synonym_valid_phrase(self):
         current_result = vb.synonym("angry")
         result = '[{"text": "get angry", "seq": 0}, {"text": "mad", "seq": 1}]'
@@ -52,11 +52,11 @@ class TestModule(unittest.TestCase):
     def test_synonym_not_valid_phrase(self):
         current_result = vb.synonym("sxsw")
         self.assertFalse(current_result)
-        
+
     def test_antonym_valid_phrase_1(self):
         current_result = vb.antonym("love")
         result = '{"text": ["hate"]}'
-        expected_result = json.loads(result)
+        expected_result = json.dumps(json.loads(result))
         if sys.version_info[:2] <= (2, 7):
             self.assertItemsEqual(current_result, expected_result)
         else:
@@ -65,7 +65,7 @@ class TestModule(unittest.TestCase):
     def test_antonym_valid_phrase_2(self):
         current_result = vb.antonym("respect")
         result = '{"text": ["disesteem", "disrespect"]}'
-        expected_result = json.loads(result)
+        expected_result = json.dumps(json.loads(result))
         if sys.version_info[:2] <= (2, 7):
             self.assertItemsEqual(current_result, expected_result)
         else:
@@ -116,7 +116,7 @@ class TestModule(unittest.TestCase):
     def test_pronunciation_valid_phrase(self):
         current_result = vb.pronunciation("hippopotamus")
         result = '[{"rawType": "ahd-legacy", "raw": "(hĭpˌə-pŏtˈə-məs)", "seq": 0}, {"rawType": "arpabet", "raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "seq": 0}]'
-        expected_result = json.loads(result)
+        expected_result = json.dumps(json.loads(result))
         if sys.version_info[:2] <= (2, 7):
             self.assertItemsEqual(current_result, expected_result)
         else:

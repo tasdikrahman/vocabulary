@@ -68,6 +68,12 @@ class Response(object):
         return response
 
     def __respond_with_list(self, data):
+        """
+        Builds a python list from a json object
+
+        :param data: the json object
+        :returns: a nested list
+        """
         pass
 
     def respond(self, data, format='json'):
@@ -85,6 +91,6 @@ class Response(object):
         }
 
         if not dispatchers.get(format, False):
-            return data
+            return json.dumps(data)
 
         return dispatchers[format](data)
