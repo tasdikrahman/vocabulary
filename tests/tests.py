@@ -156,7 +156,7 @@ class TestModule(unittest.TestCase):
 
     def test_respond_as_dict_1(self):
         data = json.loads('[{"text": "hummus", "seq": 0}]')
-        expected_result = {0: {"text": "humus"}}
+        expected_result = {0: {"text": "hummus"}}
         result = rp().respond(data, 'dict')
         if sys.version_info[:2] <= (2, 7):
             self.assertItemsEqual(expected_result, result)
@@ -165,17 +165,44 @@ class TestModule(unittest.TestCase):
 
     def test_respond_as_dict_2(self):
         data = json.loads('[{"text": "hummus", "seq": 0},{"text": "hummusy", "seq": 1}]')
-        expected_result = {0: {"text": "humus"}, 1: {"text": "humusy"}}
+        expected_result = {0: {"text": "hummus"}, 1: {"text": "hummusy"}}
         result = rp().respond(data, 'dict')
         if sys.version_info[:2] <= (2, 7):
             self.assertItemsEqual(expected_result, result)
         else:
             self.assertCountEqual(expected_result, result)
 
-    def test_respond_as_dict_2(self):
+    def test_respond_as_dict_3(self):
         data = json.loads('{"text": ["hummus"]}')
-        expected_result = {"text" : "hate"}
+        expected_result = {"text" : "hummus"}
         result = rp().respond(data, 'dict')
+        if sys.version_info[:2] <= (2, 7):
+            self.assertItemsEqual(expected_result, result)
+        else:
+            self.assertCountEqual(expected_result, result)
+
+    def test_respond_as_list_1(self):
+        data = json.loads('[{"text": "hummus", "seq": 0}]')
+        expected_result = ["hummus"]
+        result = rp().respond(data, 'list')
+        if sys.version_info[:2] <= (2, 7):
+            self.assertItemsEqual(expected_result, result)
+        else:
+            self.assertCountEqual(expected_result, result)
+
+    def test_respond_as_list_2(self):
+        data = json.loads('[{"text": "hummus", "seq": 0},{"text": "hummusy", "seq": 1}]')
+        expected_result = ["hummus", "hummusy"]
+        result = rp().respond(data, 'list')
+        if sys.version_info[:2] <= (2, 7):
+            self.assertItemsEqual(expected_result, result)
+        else:
+            self.assertCountEqual(expected_result, result)
+
+    def test_respond_as_list_3(self):
+        data = json.loads('{"text": ["hummus"]}')
+        expected_result = ["hummus"]
+        result = rp().respond(data, 'list')
         if sys.version_info[:2] <= (2, 7):
             self.assertItemsEqual(expected_result, result)
         else:
