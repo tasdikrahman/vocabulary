@@ -4,9 +4,9 @@ Contributing
 
 1. Fork it.
 
-2. Clone it 
+2. Clone it
 
-create a `virtualenv <http://pypi.python.org/pypi/virtualenv>`__ 
+create a `virtualenv <http://pypi.python.org/pypi/virtualenv>`__
 
 .. code-block:: bash
 
@@ -37,19 +37,19 @@ Or, if ``virtualenv`` is not installed on your system:
 
     (develop) $ ./tests.py -v
 
-Conform to `PEP8 <https://www.python.org/dev/peps/pep-0008/>`__ and if everything is running fine, integrate your feature 
+Conform to `PEP8 <https://www.python.org/dev/peps/pep-0008/>`__ and if everything is running fine, integrate your feature
 
 6. Push to the branch (``$ git push origin my-new-awesome-feature``)
 
 7. Create new Pull Request
 
-Hack away! 
+Hack away!
 
 To do
 =====
 
 -  [X] Add translate module
--  [ ]  Add an option like `JSON=False` or `JSON=True` where the former returns a list object
+-  [X]  Add an option like `JSON=False` or `JSON=True` where the former returns a list object
 
 Tests
 =====
@@ -90,5 +90,5 @@ if you want to chat or if you have any questions.
 Contributers
 ============
 
--  Thanks to `Anton Relin <https://github.com/relisher>`__ for adding the `translate()` module 
+-  Thanks to `Anton Relin <https://github.com/relisher>`__ for adding the `translate()` module
 -  A big shout out to all the `contributers <https://github.com/prodicus/vocabulary/graphs/contributors>`__

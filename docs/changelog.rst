@@ -16,6 +16,13 @@ Changelog
 
 .. versionadded:: 0.0.5
 
-- Added ``Vocabulary.translate()`` 
+- Added ``Vocabulary.translate()``
 - Improved Documentation
 - Minor bug fixes
+
+0.0.6
+~~~~~
+
+.. versionadded:: 0.06
+
+- Added support for specifying response format
