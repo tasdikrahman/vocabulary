@@ -1,10 +1,10 @@
 .. figure:: http://i.imgur.com/ddxYie4.jpg
-   :alt: 
+   :alt:
 
 Vocabulary
 ==========
 
-|PyPI version| |License| |Python Versions| |Build Status| |Requirements Status| |Gitter chat| 
+|PyPI version| |License| |Python Versions| |Build Status| |Requirements Status| |Gitter chat|
 
 A dictionary magician in the form of a module!
 
@@ -43,7 +43,7 @@ Features
 `[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
 -  Written in uncomplicated ``Python``
--  Returns ``JSON`` objects
+-  Returns ``JSON`` objects, ``PYTHON`` dictionaries and lists
 -  Minimum dependencies ( just uses `requests <https://github.com/kennethreitz/requests>`__ module )
 -  Easy to
    `install <https://github.com/prodicus/vocabulary#installation>`__
@@ -110,7 +110,7 @@ Let's say you want to find out the synonyms for the word ``car``.
     >>> car_synonyms = json.loads(vb.synonym("car"))
     >>> type(car_synonyms)
     <class 'list'>
-    >>> 
+    >>>
 
 So there you go. You get the data in an easy ``JSON`` format.
 
@@ -152,6 +152,8 @@ Demo
 .. figure:: https://raw.githubusercontent.com/prodicus/vocabulary/master/assets/usage.gif
    :alt: Demo link
 
+.. figure:: https://raw.githubusercontent.com/prodicus/vocabulary/master/assets/usage-format.gif
+    :alt: Demo link
 
 Documentation
 -------------
@@ -207,7 +209,7 @@ Known Issues
 ~~~~~~~~~~~~
 `[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
--  In **python2**, when using the method **Vocabulary.pronunciation()** 
+-  In **python2**, when using the method **Vocabulary.pronunciation()**
 
 .. code:: python
 
@@ -245,7 +247,7 @@ License :
 ---------
 `[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
-Built with ♥ by `Tasdik Rahman <http://tasdikrahman.me/>`__ under the `MIT License <http://prodicus.mit-license.org/>`__ © 
+Built with ♥ by `Tasdik Rahman <http://tasdikrahman.me/>`__ under the `MIT License <http://prodicus.mit-license.org/>`__ ©
 
 You can find a copy of the License at http://prodicus.mit-license.org/
 

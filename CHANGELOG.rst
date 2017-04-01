@@ -16,3 +16,8 @@ Changelog
 - Added `translate` module
 - Improved Documentation
 - Minor bug fixes
+
+0.0.6
+~~~~~
+
+- Added support for specifying response format

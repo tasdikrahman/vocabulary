@@ -23,7 +23,7 @@ If you are behind a proxy
 
 .. code-block:: bash
 
-    $ sudo apt-get install python-pip 
+    $ sudo apt-get install python-pip
 
 should fix that
 
@@ -40,7 +40,7 @@ Option 2: Installing from source
 Upgrade
 =======
 
-You can update to the latest version by doing a 
+You can update to the latest version by doing a
 
 .. code-block:: bash
 

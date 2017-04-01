@@ -4,7 +4,7 @@ Usage Examples
 
 A Simple demonstration of the module
 
-.. code-block:: python 
+.. code-block:: python
 
     ## Importing the module
     >>> from vocabulary import Vocabulary as vb
@@ -12,12 +12,12 @@ A Simple demonstration of the module
     ## Extracting "Meaning"
     >>> vb.meaning("hillbilly")
     '[{"text": "Someone who is from the hills; especially from a rural area, with a connotation of a lack of refinement or sophistication.", "seq": 0}, {"text": "someone who is from the hills", "seq": 1}, {"text": "A white person from the rural southern part of the United States.", "seq": 2}]'
-    >>> 
+    >>>
 
     ## "Synonym"
     >>> vb.synonym("hurricane")
     '[{"text": "storm", "seq": 0}, {"text": "tropical cyclone", "seq": 1}, {"text": "typhoon", "seq": 2}, {"text": "gale", "seq": 3}]'
-    >>> 
+    >>>
 
     ## "Antonym"
     >>> vb.antonym("respect")
@@ -53,3 +53,14 @@ A Simple demonstration of the module
     >>> vb.translate("goodbye", "en","es")
     '[{"seq": 0, "text": "hasta luego"}, {"seq": 1, "text": "vaya con Dios"}, {"seq": 2, "text": "despedida"}, {"seq": 3, "text": "adi\\u00f3s"}, {"seq": 4, "text": "vaya con dios"}, {"seq": 5, "text": "hasta la vista"}, {"seq": 6, "text": "nos vemos"}, {"seq": 7, "text": "adios"}, {"seq": 8, "text": "hasta pronto"}]'
     >>>
+
+    ## "Response Formatting"
+    >>> vb.antonym("love", format="dict")
+    {"text": "hate"}
+    >>> vb.antonym("love", format="list")
+    ["hate"]
+    >>> vb.part_of_speech("code", format="dict")
+    {0: {"text": "noun", "example": "A systematically arranged and comprehensive collection of laws."}}
+    >>> vb.part_of_speech("code", format="list")
+    [["noun", "A systematically arranged and comprehensive collection of laws."]]
+

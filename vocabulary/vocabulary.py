@@ -25,6 +25,7 @@ import json
 import requests
 import contextlib
 import sys
+from .responselib import Response
 
 
 __version__ = '0.0.5'
@@ -158,13 +159,14 @@ class Vocabulary(object):
         return final_list
 
     @staticmethod
-    def meaning(phrase, source_lang="en", dest_lang="en"):
+    def meaning(phrase, source_lang="en", dest_lang="en", format="json"):
         """
         make calls to the glosbe API
 
         :param phrase: word for which meaning is to be found
         :param source_lang: Defaults to : "en"
         :param dest_lang: Defaults to : "en" For eg: "fr" for french
+        :param format: response structure type. Defaults to: "json"
         :returns: returns a json object as str, False if invalid phrase
         """
         base_url = Vocabulary.__get_api_link("glosbe")
@@ -178,13 +180,14 @@ class Vocabulary(object):
                 return False
             '''get meanings'''
             meanings_list = Vocabulary.__parse_content(tuc_content, "meanings")
-            # return meanings_list
-            return json.dumps(meanings_list)
+            return Response().respond(meanings_list, format)
+            # print(meanings_list)
+            # return json.dumps(meanings_list)
         else:
             return False
 
     @staticmethod
-    def synonym(phrase, source_lang="en", dest_lang="en"):
+    def synonym(phrase, source_lang="en", dest_lang="en", format="json"):
         """
         Gets the synonym for the given word and returns them (if any found)
         Calls the glosbe API for getting the related synonym
@@ -192,6 +195,7 @@ class Vocabulary(object):
         :param phrase:  word for which synonym is to be found
         :param source_lang: Defaults to : "en"
         :param dest_lang: Defaults to : "en"
+        :param format: response structure type. Defaults to: "json"
         :returns: returns a json object as str, False if invalid phrase
         """
         base_url = Vocabulary.__get_api_link("glosbe")
@@ -205,7 +209,8 @@ class Vocabulary(object):
             synonyms_list = Vocabulary.__parse_content(tuc_content, "phrase")
             if synonyms_list:
                 # return synonyms_list
-                return json.dumps(synonyms_list)
+                # return json.dumps(synonyms_list)
+                return Response().respond(synonyms_list, format)
             else:
                 return False
 
@@ -216,7 +221,7 @@ class Vocabulary(object):
         ## if this gives me no results, will query "bighugelabs"
 
     @staticmethod
-    def translate(phrase, source_lang, dest_lang):
+    def translate(phrase, source_lang, dest_lang, format="json"):
             """
             Gets the translations for a given word, and returns possibilites as a list
             Calls the glosbe API for getting the translation
@@ -229,6 +234,7 @@ class Vocabulary(object):
             :param phrase:  word for which translation is being found
             :param source_lang: Translation from language
             :param dest_lang: Translation to language
+            :param format: response structure type. Defaults to: "json"
             :returns: returns a json object as str, False if invalid phrase
             """
             base_url = Vocabulary.__get_api_link("glosbe")
@@ -242,7 +248,8 @@ class Vocabulary(object):
                 translations_list = Vocabulary.__parse_content(tuc_content, "phrase")
                 if translations_list:
                     # return synonyms_list
-                    return json.dumps(translations_list)
+                    # return json.dumps(translations_list)
+                    return Response().respond(translations_list, format)
                 else:
                     return False
             else:
@@ -251,7 +258,7 @@ class Vocabulary(object):
 
 
     @staticmethod
-    def antonym(phrase):
+    def antonym(phrase, format="json"):
         """
         queries the bighugelabs API for the antonym. The results include
          - "syn" (synonym)
@@ -264,6 +271,7 @@ class Vocabulary(object):
         - synonym (using glosbe API)
 
         :param phrase: word for which antonym is to be found
+        :param format: response structure type. Defaults to: "json"
         :returns: returns a json object
         :raises KeyError: returns False when no antonyms are found
         """
@@ -296,16 +304,18 @@ class Vocabulary(object):
                     antonyms.append(final_dictionary)
 
             # return json.dumps(final_dictionary)
-            return final_dictionary
+            # return final_dictionary
+            return Response().respond(final_dictionary, format)
         else:
             return False
 
     @staticmethod
-    def part_of_speech(phrase):
+    def part_of_speech(phrase, format='json'):
         """
         querrying Wordnik's API for knowing whether the word is a noun, adjective and the like
 
         :params phrase: word for which part_of_speech is to be found
+        :param format: response structure type. Defaults to: "json"
         :returns: returns a json object as str, False if invalid phrase
         """
         ## We get a list object as a return value from the Wordnik API
@@ -326,18 +336,20 @@ class Vocabulary(object):
                     for key, value in part_of_speech.items():
                         final_list.append({ "seq": i, "text": key, "example:" :value})
                         i += 1
-                    return json.dumps(final_list)
+                    # return json.dumps(final_list)
                     # return final_list
+                    return Response().respond(final_list, format)
                 else:
                     return False
         else:
             return False
 
     @staticmethod
-    def usage_example(phrase):
+    def usage_example(phrase, format='json'):
         """Takes the source phrase and queries it to the urbandictionary API
 
         :params phrase: word for which usage_example is to be found
+        :param format: response structure type. Defaults to: "json"
         :returns: returns a json object as str, False if invalid phrase
         """
         base_url = Vocabulary.__get_api_link("urbandict")
@@ -351,19 +363,21 @@ class Vocabulary(object):
                     word_examples[i] = example["example"].replace("\r", "").replace("\n", "")
             if word_examples:
                 ## reforamatting "word_examples" using "__clean_dict()"
-                return json.dumps(Vocabulary.__clean_dict(word_examples))
+                # return json.dumps(Vocabulary.__clean_dict(word_examples))
                 # return Vocabulary.__clean_dict(word_examples)
+                return Response().respond(Vocabulary.__clean_dict(word_examples), format)
             else:
                 return False
         else:
             return False
 
     @staticmethod
-    def pronunciation(phrase):
+    def pronunciation(phrase, format='json'):
         """
         Gets the pronunciation from the Wordnik API
 
         :params phrase: word for which pronunciation is to be found
+        :param format: response structure type. Defaults to: "json"
         :returns: returns a list object, False if invalid phrase
         """
         base_url = Vocabulary.__get_api_link("wordnik")
@@ -373,21 +387,24 @@ class Vocabulary(object):
             '''
             Refer : http://stackoverflow.com/questions/18337407/saving-utf-8-texts-in-json-dumps-as-utf8-not-as-u-escape-sequence
             '''
-            ## TODO: Fix the unicode issue mentioned in 
+            ## TODO: Fix the unicode issue mentioned in
             ## https://github.com/prodicus/vocabulary#181known-issues
             if sys.version_info[:2] <= (2, 7):  ## python2
-                return json_obj
+                # return json_obj
+                return Response().respond(json_obj, format)
             else:   ## python3
-                return json.loads(json.dumps(json_obj, ensure_ascii=False))
+                # return json.loads(json.dumps(json_obj, ensure_ascii=False))
+                return Response().respond(json_obj, format)
         else:
             return False
 
     @staticmethod
-    def hyphenation(phrase):
+    def hyphenation(phrase, format='json'):
         """
         Returns back the stress points in the "phrase" passed
 
         :param phrase: word for which hyphenation is to be found
+        :param format: response structure type. Defaults to: "json"
         :returns: returns a json object as str, False if invalid phrase
         """
         base_url = Vocabulary.__get_api_link("wordnik")
@@ -395,7 +412,8 @@ class Vocabulary(object):
         hyphenation = {}
         json_obj = Vocabulary.__return_json(url)
         if json_obj:
-            return json.dumps(json_obj)
+            # return json.dumps(json_obj)
             # return json_obj
+            return Response().respond(json_obj, format)
         else:
             return False
