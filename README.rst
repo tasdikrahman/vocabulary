@@ -179,6 +179,7 @@ Contributers
 ~~~~~~~~~~~~
 `[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
+-  Huge shoutout to `@tenorz007 <https://github.com/tenorz007>`__ for adding the ability to return the API response as different data structures.
 -  Thanks to `Anton Relin <https://github.com/relisher>`__ for adding the `translate <https://github.com/prodicus/vocabulary/blob/master/vocabulary/vocabulary.py#L218>`__ module.
 - And a big shout out to all the `contributers <https://github.com/prodicus/vocabulary/graphs/contributors>`__ for their contributions
 
@@ -251,19 +252,16 @@ Built with ♥ by `Tasdik Rahman <http://tasdikrahman.me/>`__ under the `MIT Lic
 
 You can find a copy of the License at http://prodicus.mit-license.org/
 
-|Bitdeli Badge|
-
 .. |PyPI version| image:: https://img.shields.io/pypi/v/Vocabulary.svg
-   :target: https://img.shields.io/pypi/v/Vocabulary.svg
+   :target: https://pypi.python.org/pypi/Vocabulary/0.0.6
 .. |License| image:: https://img.shields.io/pypi/l/vocabulary.svg
-   :target: https://img.shields.io/pypi/l/vocabulary.svg
+   :target: https://github.com/prodicus/vocabulary/blob/master/LICENSE
 .. |Python Versions| image:: https://img.shields.io/pypi/pyversions/Vocabulary.svg
 .. |Build Status| image:: https://travis-ci.org/prodicus/vocabulary.svg?branch=master
+   :target: https://travis-ci.org/prodicus/vocabulary
 .. |Gitter chat| image:: https://img.shields.io/gitter/room/gitterHQ/gitter.svg
    :alt: Join the chat at https://gitter.im/prodicus/vocabulary
    :target: https://gitter.im/prodicus/vocabulary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-.. |Bitdeli Badge| image:: https://d2weczhvl823v0.cloudfront.net/prodicus/vocabulary/trend.png
-   :target: https://bitdeli.com/free%20Bitdeli%20Badge
 .. |Requirements Status| image:: https://requires.io/github/prodicus/vocabulary/requirements.svg?branch=master
    :target: https://requires.io/github/prodicus/vocabulary/requirements/?branch=master
 .. |Paypal badge| image:: https://tuxtricks.files.wordpress.com/2016/12/donate.png
