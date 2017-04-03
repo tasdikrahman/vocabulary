@@ -28,7 +28,7 @@ import sys
 from .responselib import Response
 
 
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 __author__ = "Tasdik Rahman"
 
 
@@ -254,8 +254,6 @@ class Vocabulary(object):
                     return False
             else:
                 return False
-
-
 
     @staticmethod
     def antonym(phrase, format="json"):
