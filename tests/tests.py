@@ -206,10 +206,10 @@ class TestModule(unittest.TestCase):
     def test_antonym_found(self, mock_api_call):
         res = {
             "noun": {
-                "ant": ["hate"]
+                "ant": ["hate", "dislike"]
             },
             "verb": {
-                "ant": ["hate"]
+                "ant": ["hate", "hater"]
             }
         }
 
@@ -217,7 +217,7 @@ class TestModule(unittest.TestCase):
         mock_api_call.return_value.status_code = 200
         mock_api_call.return_value.json.return_value = res
 
-        expected_result = '{"text": ["hate"]}'
+        expected_result = '[{"text": "hate", "seq": 0}, {"text": "dislike", "seq": 1}, {"text": "hater", "seq": 2}]'
         result = vb.antonym("love")
 
         if sys.version_info[:2] <= (2, 7):

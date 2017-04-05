@@ -277,35 +277,29 @@ class Vocabulary(object):
         url = base_url.format(word=phrase)
         json_obj = Vocabulary.__return_json(url)
 
-        """The thing here is that, I have no way to know what the keys returned would be,
-        so I will use the 'dict.keys()' method to get all the keys first
-        """
-        if json_obj:
-            antonyms = []
-            dictionary = {}
-            final_dictionary = {}
-            keys = json_obj.keys()
-            # searching for the key "ant" inside the dictionary which is the value for the particular
-            # key being iterated (one of the "keys" key)
-            for key in keys:
-                try:
-                    key_value = json_obj[key]
-                    value = key_value["ant"]
-                    dictionary["text"] = value
-                except KeyError:  # if no antonyms are found!
-                    return False
-
-            # removing duplicates if any
-            for key, value in dictionary.items():
-                if value not in final_dictionary.values():
-                    final_dictionary[key] = value
-                    antonyms.append(final_dictionary)
-
-            # return json.dumps(final_dictionary)
-            # return final_dictionary
-            return Response().respond(final_dictionary, format)
-        else:
+        if not json_obj:
             return False
+
+        result = []
+        visited = {}
+        idx = 0
+        for key in json_obj.keys():
+            antonyms = json_obj[key].get('ant', False)
+            if not antonyms:
+                continue
+
+            for antonym in antonyms:
+                if visited.get(antonym, False):
+                    continue
+
+                result.append({'seq': idx, 'text': antonym})
+                idx += 1
+                visited[antonym] = True
+
+        if not result:
+            return False
+
+        return Response().respond(result, format)
 
     @staticmethod
     def part_of_speech(phrase, format='json'):
