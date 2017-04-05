@@ -321,26 +321,16 @@ class Vocabulary(object):
         url = base_url.format(word=phrase, action="definitions")
         json_obj = Vocabulary.__return_json(url)
 
-        final_list = []
-        if json_obj:
-            part_of_speech = {}
-            for content in json_obj:
-                key = content["partOfSpeech"]
-                value = content["text"]
-                part_of_speech[key] = value
-                if part_of_speech:
-                    # cleaning "part_of_speech" using "__clean_dict()"
-                    i = 0
-                    for key, value in part_of_speech.items():
-                        final_list.append({"seq": i, "text": key, "example:": value})
-                        i += 1
-                    # return json.dumps(final_list)
-                    # return final_list
-                    return Response().respond(final_list, format)
-                else:
-                    return False
-        else:
+        if not json_obj:
             return False
+
+        result = []
+        for idx, obj in enumerate(json_obj):
+            text = obj.get('partOfSpeech', None)
+            example = obj.get('text', None)
+            result.append({"seq": idx, "text": text, "example": example})
+
+        return Response().respond(result, format)
 
     @staticmethod
     def usage_example(phrase, format='json'):

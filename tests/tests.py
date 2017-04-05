@@ -252,6 +252,11 @@ class TestModule(unittest.TestCase):
                 "word": "hello",
                 "partOfSpeech": "interjection",
                 "text": "greeting"
+            },
+            {
+                "word": "hello",
+                "partOfSpeech": "verb-intransitive",
+                "text": "To call."
             }
         ]
 
@@ -259,7 +264,7 @@ class TestModule(unittest.TestCase):
         mock_api_call.return_value.status_code = 200
         mock_api_call.return_value.json.return_value = res
 
-        expected_result = '[{"text": "interjection", "example:": "greeting", "seq": 0}]'
+        expected_result = '[{"text": "interjection", "example": "greeting", "seq": 0}, {"text": "verb-intransitive", "example": "To call.", "seq": 1}]'
         result = vb.part_of_speech("hello")
 
         if sys.version_info[:2] <= (2, 7):
