@@ -69,10 +69,7 @@ class Vocabulary(object):
             "bighugelabs": "http://words.bighugelabs.com/api/2/eb4e57bb2c34032da68dfeb3a0578b68/{word}/json"
         }
 
-        if api in api_name2links.keys():
-            return api_name2links[api]
-        else:
-            return False
+        return api_name2links.get(api, False)
 
     @staticmethod
     def __return_json(url):
@@ -88,8 +85,7 @@ class Vocabulary(object):
         with try_URL():
             response = requests.get(url)
             if response.status_code == 200:
-                json_obj = response.json()
-                return json_obj
+                return response.json()
             else:
                 return False
 
