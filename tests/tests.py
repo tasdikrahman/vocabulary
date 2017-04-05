@@ -5,154 +5,394 @@ from vocabulary import Vocabulary as vb
 from vocabulary.responselib import Response as rp
 import unittest
 import sys
+
 try:
     import simplejson as json
 except ImportError:
     import json
-
-
+try:
+    from unittest import mock
+except Exception as e:
+    import mock
 
 class TestModule(unittest.TestCase):
     """Checks for the sanity of all module methods"""
 
-    def test_meaning_valid_phrase(self):
-        current_result = vb.meaning("humming")
-        result = '[{"text": "The sound of something that hums; a hum.", "seq": 0}, {"text": "<i>present participle of [i]hum</i>[/i]", "seq": 1}, {"text": "the act of singing with closed lips", "seq": 2}, {"text": "a humming noise; &quot;the hum of distant traffic&quot;", "seq": 3}, {"text": "Present participle of hum.", "seq": 4}]'
-        middle_val = json.loads(result)
-        expected_result = json.dumps(middle_val)
-        if sys.version_info[:2] <= (2, 7):  ## python 2
-            self.assertItemsEqual(current_result, expected_result)
-        else:       # python 3
-            """
-            assertItemsEqual() was renamed to assertCountEqual()
-            Why I am not using assertEqual() here?
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_meaning_found(self, mock_api_call):
+        res = {
+            "tuc": [
+                {
+                    "meanings": [
+                        {
+                            "language": "en",
+                            "text": "the act of singing with closed lips"
+                        }
+                    ]
+                }
+            ]
+        }
 
-            Reference:
-            - http://stackoverflow.com/a/7473137/3834059
-            - https://docs.python.org/2/library/unittest.html#unittest.TestCase.assertItemsEqual
-            - https://docs.python.org/3/library/unittest.html?highlight=assertcountequal#unittest.TestCase.assertCountEqual
-            """
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
 
-            self.assertCountEqual(current_result, expected_result)
+        expected_result = '[{"seq": 0, "text": "the act of singing with closed lips"}]'
+        expected_result = json.dumps(json.loads(expected_result))
+        result = vb.meaning("humming")
 
-    def test_meaning_not_valid_phrase(self):
-        current_result = vb.meaning("sxsw")
-        self.assertFalse(current_result)
-
-    def test_synonym_valid_phrase(self):
-        current_result = vb.synonym("angry")
-        result = '[{"text": "get angry", "seq": 0}, {"text": "mad", "seq": 1}]'
-        middle_val = json.loads(result)
-        expected_result = json.dumps(middle_val)
         if sys.version_info[:2] <= (2, 7):
-            self.assertItemsEqual(current_result, expected_result)
+            self.assertItemsEqual(expected_result, result)
         else:
-            self.assertCountEqual(current_result, expected_result)
+            self.assertCountEqual(expected_result, result)
 
-    def test_synonym_not_valid_phrase(self):
-        current_result = vb.synonym("sxsw")
-        self.assertFalse(current_result)
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_meaning_not_found(self, mock_api_call):
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 404
 
-    def test_antonym_valid_phrase_1(self):
-        current_result = vb.antonym("love")
-        result = '{"text": ["hate"]}'
-        expected_result = json.dumps(json.loads(result))
+        self.assertFalse(vb.meaning("humming"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_meaning_key_error(self, mock_api_call):
+        res = {
+            "result" : "ok",
+            "phrase" : "humming"
+        }
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        expected_result = '[{"seq": 0, "text": "the act of singing with closed lips"}]'
+        expected_result = json.dumps(json.loads(expected_result))
+
+        self.assertFalse(vb.meaning("humming"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_synonynm_found(self, mock_api_call):
+        res = {
+            "tuc": [
+                {
+                    "phrase": {
+                        "text": "get angry",
+                        "language": "en"
+                    }
+                },
+                {
+                    "phrase": {
+                        "text": "mad",
+                        "language": "en"
+                    },
+                }
+            ]
+        }
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        expected_result = '[{"text": "get angry", "seq": 0}, {"text": "mad", "seq": 1}]'
+        expected_result = json.dumps(json.loads(expected_result))
+        result = vb.synonym("angry")
+
         if sys.version_info[:2] <= (2, 7):
-            self.assertItemsEqual(current_result, expected_result)
+            self.assertItemsEqual(expected_result, result)
         else:
-            self.assertCountEqual(current_result, expected_result)
+            self.assertCountEqual(expected_result, result)
 
-    def test_antonym_valid_phrase_2(self):
-        current_result = vb.antonym("respect")
-        result = '{"text": ["disesteem", "disrespect"]}'
-        expected_result = json.dumps(json.loads(result))
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_synonynm_not_found(self, mock_api_call):
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 404
+
+        self.assertFalse(vb.synonym("angry"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_synonynm_tuc_key_error(self, mock_api_call):
+        res = {
+            "result" : "ok",
+            "phrase" : "angry"
+        }
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        self.assertFalse(vb.synonym("angry"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_synonynm_empty_list(self, mock_api_call):
+        res = {
+            "result" : "ok",
+            "tuc" : [],
+            "phrase" : "angry"
+        }
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        self.assertFalse(vb.synonym("angry"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_translate_found(self, mock_api_call):
+        res = {
+            "tuc": [
+                {
+                    "phrase": {
+                        "text": "anglais",
+                        "language": "fr"
+                    }
+                },
+                {
+                    "phrase": {
+                        "text": "germanique",
+                        "language": "fr"
+                    },
+                }
+            ]
+        }
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        expected_result = '[{"text": "anglais", "seq": 0}, {"text": "germanique", "seq": 1}]'
+        expected_result = json.dumps(json.loads(expected_result))
+        result = vb.translate("english", "en", "fr")
+
         if sys.version_info[:2] <= (2, 7):
-            self.assertItemsEqual(current_result, expected_result)
+            self.assertItemsEqual(expected_result, result)
         else:
-            self.assertCountEqual(current_result, expected_result)
+            self.assertCountEqual(expected_result, result)
 
-    def test_antonym_not_valid_phrase(self):
-        current_result = vb.antonym("sxsw")
-        self.assertFalse(current_result)
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_translate_not_found(self, mock_api_call):
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 404
 
-    def test_partOfSpeech_valid_phrase_1(self):
-        current_result = vb.part_of_speech("hello")
-        result = '[{"text": "interjection", "example:": "Used to greet someone, answer the telephone, or express surprise.", "seq": 0}]'
-        middle_val = json.loads(result)
-        expected_result = json.dumps(middle_val)
+        self.assertFalse(vb.translate("english", "en", "fr"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_translate_tuc_key_error(self, mock_api_call):
+        res = {
+            "result" : "ok",
+            "phrase" : "english"
+        }
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        self.assertFalse(vb.translate("english", "en", "fr"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_translate_empty_list(self, mock_api_call):
+        res = {
+            "result" : "ok",
+            "tuc" : [],
+            "phrase" : "english"
+        }
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        self.assertFalse(vb.translate("english", "en", "fr"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_antonym_found(self, mock_api_call):
+        res = {
+            "noun": {
+                "ant": ["hate"]
+            },
+            "verb": {
+                "ant": ["hate"]
+            }
+        }
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        expected_result = '{"text": ["hate"]}'
+        result = vb.antonym("love")
+
         if sys.version_info[:2] <= (2, 7):
-            self.assertItemsEqual(current_result, expected_result)
+            self.assertItemsEqual(expected_result, result)
         else:
-            self.assertCountEqual(current_result, expected_result)
+            self.assertCountEqual(expected_result, result)
 
-    def test_partOfSpeech_valid_phrase_2(self):
-        current_result = vb.part_of_speech("rapidly")
-        result = '[{"text": "adverb", "example:": "With speed; in a rapid manner.", "seq": 0}]'
-        middle_val = json.loads(result)
-        expected_result = json.dumps(middle_val)
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_antonym_not_found(self, mock_api_call):
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 404
+
+        self.assertFalse(vb.antonym("love"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_antonym_ant_key_error(self, mock_api_call):
+        res = {
+            "noun": {},
+            "verb": {}
+        }
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        self.assertFalse(vb.antonym("love"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_partOfSpeech_found(self, mock_api_call):
+        res = [
+            {
+                "word": "hello",
+                "partOfSpeech": "interjection",
+                "text": "greeting"
+            }
+        ]
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        expected_result = '[{"text": "interjection", "example:": "greeting", "seq": 0}]'
+        result = vb.part_of_speech("hello")
+
         if sys.version_info[:2] <= (2, 7):
-            self.assertItemsEqual(current_result, expected_result)
+            self.assertItemsEqual(expected_result, result)
         else:
-            self.assertCountEqual(current_result, expected_result)
+            self.assertCountEqual(expected_result, result)
 
-    def test_partOfSpeech_not_valid_phrase(self):
-        current_result = vb.part_of_speech("sxsw")
-        self.assertFalse(current_result)
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_partOfSpeech_not_found(self, mock_api_call):
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 404
 
-    def test_usageExamples_valid_phrase(self):
-        current_result = vb.usage_example("hillock")
-        result = '[{"seq": 0, "text": "I went to the to of the hillock to look around."}]'
-        middle_val = json.loads(result)
-        expected_result = json.dumps(middle_val)
+        self.assertFalse(vb.part_of_speech("hello"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_usageExample_found(self, mock_api_call):
+        res = {
+            "list": [
+                {
+                    "definition": "a small mound or hill",
+                    "thumbs_up": 18,
+                    "word": "hillock",
+                    "example": "I went to the to of the hillock to look around.",
+                    "thumbs_down": 3
+                }
+            ]
+        }
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        expected_result = '[{"seq": 0, "text": "I went to the to of the hillock to look around."}]'
+        result = vb.usage_example("hillock")
+
         if sys.version_info[:2] <= (2, 7):
-            self.assertItemsEqual(current_result, expected_result)
+            self.assertItemsEqual(expected_result, result)
         else:
-            self.assertCountEqual(current_result, expected_result)
+            self.assertCountEqual(expected_result, result)
 
-    def test_usageExamples_not_valid_phrase(self):
-        current_result = vb.usage_example("lksj")
-        self.assertFalse(current_result)
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_usageExample_not_found(self, mock_api_call):
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 404
 
-    def test_pronunciation_valid_phrase(self):
-        current_result = vb.pronunciation("hippopotamus")
-        result = '[{"rawType": "ahd-legacy", "raw": "(hĭpˌə-pŏtˈə-məs)", "seq": 0}, {"rawType": "arpabet", "raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "seq": 0}]'
-        expected_result = json.dumps(json.loads(result))
+        self.assertFalse(vb.usage_example("hillock"))
+
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_usageExample_empty_list(self, mock_api_call):
+        res = {
+            "list": [
+                {
+                    "definition": "a small mound or hill",
+                    "thumbs_up": 0,
+                    "word": "hillock",
+                    "example": "I went to the to of the hillock to look around.",
+                    "thumbs_down": 3
+                }
+            ]
+        }
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        self.assertFalse(vb.usage_example("hillock"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_pronunciation_found(self, mock_api_call):
+        res = [
+            {
+                "rawType": "ahd-legacy",
+                "seq": 0,
+                "raw": "hip"
+            },
+            {
+                "rawType": "arpabet",
+                "seq": 0,
+                "raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S"
+            }
+        ]
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        expected_result = '[{"rawType": "ahd-legacy", "raw": "hip", "seq": 0}, {"rawType": "arpabet", "raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "seq": 0}]'
+        result = vb.pronunciation("hippopotamus")
+
         if sys.version_info[:2] <= (2, 7):
-            self.assertItemsEqual(current_result, expected_result)
+            self.assertItemsEqual(expected_result, result)
         else:
-            self.assertCountEqual(current_result, expected_result)
+            self.assertCountEqual(expected_result, result)
 
-    def test_pronunciation_not_valid_phrase(self):
-        current_result = vb.pronunciation("lksj") # for non valid word
-        self.assertFalse(current_result)
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_pronunciation_not_found(self, mock_api_call):
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 404
 
-    def test_hyphenation_valid_phrase(self):
-        current_result = vb.hyphenation("hippopotamus")
-        result = '[{"seq": 0, "text": "hip", "type": "secondary stress"}, {"seq": 1, "text": "po"}, {"seq": 2, "text": "pot", "type": "stress"}, {"seq": 3, "text": "a"}, {"seq": 4, "text": "mus"}]'
-        middle_val = json.loads(result)
-        expected_result = json.dumps(middle_val)
+        self.assertFalse(vb.pronunciation("hippopotamus"))
+
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_hyphenation_found(self, mock_api_call):
+        res = [
+            {
+                "seq": 0,
+                "type": "secondary stress",
+                "text": "hip"
+            },
+            {
+                "seq": 1,
+                "text": "po"
+            }
+        ]
+
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 200
+        mock_api_call.return_value.json.return_value = res
+
+        expected_result = '[{"seq": 0, "text": "hip", "type": "secondary stress"}, {"seq": 1, "text": "po"}]'
+        result = vb.hyphenation("hippopotamus")
+
         if sys.version_info[:2] <= (2, 7):
-            self.assertItemsEqual(current_result, expected_result)
+            self.assertItemsEqual(expected_result, result)
         else:
-            self.assertCountEqual(current_result, expected_result)
+            self.assertCountEqual(expected_result, result)
 
-    def test_hyphenation_not_valid_phrase(self):
-        current_result = vb.hyphenation("sxsw")
-        self.assertFalse(current_result)
+    @mock.patch('vocabulary.vocabulary.requests.get')
+    def test_hyphenation_not_found(self, mock_api_call):
+        mock_api_call.return_value = mock.Mock()
+        mock_api_call.return_value.status_code = 404
 
-    def test_translate_valid_phrase(self):
-        current_result = vb.translate("hummus", "en", "es")
-        result = '[{"text": "hummus", "seq": 0}]'
-        middle_val = json.loads(result)
-        expected_result = json.dumps(middle_val)
-        if sys.version_info[:2] <= (2, 7):
-            self.assertItemsEqual(current_result, expected_result)
-        else:
-            self.assertCountEqual(current_result, expected_result)
-
-    def test_translate_not_valid_phrase(self):
-        current_result = vb.translate("asldkfj", "en", "ru")
-        self.assertEqual(current_result, False)
+        self.assertFalse(vb.hyphenation("hippopotamus"))
 
     def test_respond_as_dict_1(self):
         data = json.loads('[{"text": "hummus", "seq": 0}]')
