@@ -346,7 +346,7 @@ class TestModule(unittest.TestCase):
         mock_api_call.return_value.status_code = 200
         mock_api_call.return_value.json.return_value = res
 
-        expected_result = '[{"rawType": "ahd-legacy", "raw": "hip", "seq": 0}, {"rawType": "arpabet", "raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "seq": 0}]'
+        expected_result = '[{"rawType": "ahd-legacy", "raw": "hip", "seq": 0}, {"rawType": "arpabet", "raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "seq": 1}]'
         result = vb.pronunciation("hippopotamus")
 
         if sys.version_info[:2] <= (2, 7):

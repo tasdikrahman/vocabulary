@@ -385,9 +385,12 @@ class Vocabulary(object):
             '''
             Refer : http://stackoverflow.com/q/18337407/3834059
             '''
-            # TODO: Fix the unicode issue mentioned in
-            # https://github.com/prodicus/vocabulary#181known-issues
-            if sys.version_info[:2] <= (2, 7):  # python2
+            ## TODO: Fix the unicode issue mentioned in
+            ## https://github.com/prodicus/vocabulary#181known-issues
+            for idx, obj in enumerate(json_obj):
+                obj['seq'] = idx
+
+            if sys.version_info[:2] <= (2, 7):  ## python2
                 # return json_obj
                 return Response().respond(json_obj, format)
             else:  # python3
