@@ -210,11 +210,11 @@ Known Issues
 ~~~~~~~~~~~~
 `[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
--  In **python2**, when using the method **Vocabulary.pronunciation()**
+-  In **python2**, when using the method **Vocabulary.synonym()** or **Vocabulary.pronunciation()**
 
 .. code:: python
 
-    >>> vb.pronunciation("hippopotamus")
+    >>> vb.synonym("car")
     [{
       "seq": 0,
       "text": "automotive"
@@ -234,7 +234,7 @@ Known Issues
     >>> type(vb.pronunciation("hippopotamus"))
     <class 'list'>
     >>> json.dumps(vb.pronunciation("hippopotamus"))
-    '[{"raw": "(h\\u012dp\\u02cc\\u0259-p\\u014ft\\u02c8\\u0259-m\\u0259s)", "rawType": "ahd-legacy", "seq": 0}, {"raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "rawType": "arpabet", "seq": 0}]'
+    '[{"raw": "(h\\u012dp\\u02cc\\u0259-p\\u014ft\\u02c8\\u0259-m\\u0259s)", "rawType": "ahd-legacy", "seq": 0}, {"raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "rawType": "arpabet", "seq": 1}]'
     >>>
 
 You are being returned a ``list`` object instead of a ``JSON`` object.
