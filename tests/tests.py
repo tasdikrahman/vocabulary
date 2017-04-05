@@ -15,6 +15,7 @@ try:
 except Exception as e:
     import mock
 
+
 class TestModule(unittest.TestCase):
     """Checks for the sanity of all module methods"""
 
@@ -56,8 +57,8 @@ class TestModule(unittest.TestCase):
     @mock.patch('vocabulary.vocabulary.requests.get')
     def test_meaning_key_error(self, mock_api_call):
         res = {
-            "result" : "ok",
-            "phrase" : "humming"
+            "result": "ok",
+            "phrase": "humming"
         }
 
         mock_api_call.return_value = mock.Mock()
@@ -111,8 +112,8 @@ class TestModule(unittest.TestCase):
     @mock.patch('vocabulary.vocabulary.requests.get')
     def test_synonynm_tuc_key_error(self, mock_api_call):
         res = {
-            "result" : "ok",
-            "phrase" : "angry"
+            "result": "ok",
+            "phrase": "angry"
         }
 
         mock_api_call.return_value = mock.Mock()
@@ -124,9 +125,9 @@ class TestModule(unittest.TestCase):
     @mock.patch('vocabulary.vocabulary.requests.get')
     def test_synonynm_empty_list(self, mock_api_call):
         res = {
-            "result" : "ok",
-            "tuc" : [],
-            "phrase" : "angry"
+            "result": "ok",
+            "tuc": [],
+            "phrase": "angry"
         }
 
         mock_api_call.return_value = mock.Mock()
@@ -177,8 +178,8 @@ class TestModule(unittest.TestCase):
     @mock.patch('vocabulary.vocabulary.requests.get')
     def test_translate_tuc_key_error(self, mock_api_call):
         res = {
-            "result" : "ok",
-            "phrase" : "english"
+            "result": "ok",
+            "phrase": "english"
         }
 
         mock_api_call.return_value = mock.Mock()
@@ -190,9 +191,9 @@ class TestModule(unittest.TestCase):
     @mock.patch('vocabulary.vocabulary.requests.get')
     def test_translate_empty_list(self, mock_api_call):
         res = {
-            "result" : "ok",
-            "tuc" : [],
-            "phrase" : "english"
+            "result": "ok",
+            "tuc": [],
+            "phrase": "english"
         }
 
         mock_api_call.return_value = mock.Mock()
@@ -306,7 +307,6 @@ class TestModule(unittest.TestCase):
 
         self.assertFalse(vb.usage_example("hillock"))
 
-
     @mock.patch('vocabulary.vocabulary.requests.get')
     def test_usageExample_empty_list(self, mock_api_call):
         res = {
@@ -414,7 +414,7 @@ class TestModule(unittest.TestCase):
 
     def test_respond_as_dict_3(self):
         data = json.loads('{"text": ["hummus"]}')
-        expected_result = {"text" : "hummus"}
+        expected_result = {"text": "hummus"}
         result = rp().respond(data, 'dict')
         if sys.version_info[:2] <= (2, 7):
             self.assertItemsEqual(expected_result, result)
@@ -447,6 +447,7 @@ class TestModule(unittest.TestCase):
             self.assertItemsEqual(expected_result, result)
         else:
             self.assertCountEqual(expected_result, result)
+
 
 if __name__ == "__main__":
     unittest.main()

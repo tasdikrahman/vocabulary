@@ -21,7 +21,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
-
 import json
 
 __version__ = '0.0.1'
@@ -36,8 +35,6 @@ class Response(object):
     | __respond_with_list()  |                  |
     |                        |                  |
     """
-
-
 
     def __respond_with_dict(self, data):
         """
@@ -98,8 +95,8 @@ class Response(object):
         :returns: a python specified object
         """
         dispatchers = {
-            "dict" : self.__respond_with_dict,
-            "list" : self.__respond_with_list
+            "dict": self.__respond_with_dict,
+            "list": self.__respond_with_list
         }
 
         if not dispatchers.get(format, False):
