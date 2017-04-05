@@ -25,8 +25,8 @@ import json
 import requests
 import contextlib
 import sys
-from .responselib import Response
 
+from .responselib import Response
 
 __version__ = '0.0.6'
 __author__ = "Tasdik Rahman"
@@ -34,9 +34,11 @@ __author__ = "Tasdik Rahman"
 
 @contextlib.contextmanager
 def try_URL(message='Connection Lost'):
-    try: yield
+    try:
+        yield
     except requests.exceptions.ConnectionError:
         print(message)
+
 
 class Vocabulary(object):
     """
@@ -51,8 +53,6 @@ class Vocabulary(object):
     |                   | pronunciation()  |
     |                   | translate()      |
     """
-
-
 
     @staticmethod
     def __get_api_link(api):
@@ -116,22 +116,22 @@ class Vocabulary(object):
             if content_to_be_parsed in content_dict.keys():
                 contents_raw = content_dict[content_to_be_parsed]
                 if content_to_be_parsed == "phrase":
-                    ## for 'phrase', 'contents_raw' is a dictionary
+                    # for 'phrase', 'contents_raw' is a dictionary
                     initial_parsed_content[i] = contents_raw['text']
                     i += 1
                 elif content_to_be_parsed == "meanings":
-                    ## for 'meanings', 'contents_raw' is a list
+                    # for 'meanings', 'contents_raw' is a list
                     for meaning_content in contents_raw:
                         initial_parsed_content[i] = meaning_content['text']
-                        i +=1
+                        i += 1
 
         final_parsed_content = {}
-        ## removing duplicates(if any) from the dictionary
+        # removing duplicates(if any) from the dictionary
         for key, value in initial_parsed_content.items():
             if value not in final_parsed_content.values():
                 final_parsed_content[key] = value
 
-        ## calling __clean_dict
+        # calling __clean_dict
 
         formatted_list = Vocabulary.__clean_dict(final_parsed_content)
         return formatted_list
@@ -175,7 +175,7 @@ class Vocabulary(object):
 
         if json_obj:
             try:
-                tuc_content = json_obj["tuc"]       ## "tuc_content" is a "list"
+                tuc_content = json_obj["tuc"]  # "tuc_content" is a "list"
             except KeyError:
                 return False
             '''get meanings'''
@@ -202,8 +202,8 @@ class Vocabulary(object):
         url = base_url.format(word=phrase, source_lang=source_lang, dest_lang=dest_lang)
         json_obj = Vocabulary.__return_json(url)
         if json_obj:
-            try :
-                tuc_content = json_obj["tuc"]       ## "tuc_content" is a "list"
+            try:
+                tuc_content = json_obj["tuc"]  # "tuc_content" is a "list"
             except KeyError:
                 return False
             synonyms_list = Vocabulary.__parse_content(tuc_content, "phrase")
@@ -217,12 +217,12 @@ class Vocabulary(object):
         else:
             return False
 
-        ## TO-DO:
-        ## if this gives me no results, will query "bighugelabs"
+            # TO-DO:
+            # if this gives me no results, will query "bighugelabs"
 
     @staticmethod
     def translate(phrase, source_lang, dest_lang, format="json"):
-            """
+        """
             Gets the translations for a given word, and returns possibilites as a list
             Calls the glosbe API for getting the translation
 
@@ -237,23 +237,23 @@ class Vocabulary(object):
             :param format: response structure type. Defaults to: "json"
             :returns: returns a json object as str, False if invalid phrase
             """
-            base_url = Vocabulary.__get_api_link("glosbe")
-            url = base_url.format(word=phrase, source_lang=source_lang, dest_lang=dest_lang)
-            json_obj = Vocabulary.__return_json(url)
-            if json_obj:
-                try :
-                    tuc_content = json_obj["tuc"]       ## "tuc_content" is a "list"
-                except KeyError:
-                    return False
-                translations_list = Vocabulary.__parse_content(tuc_content, "phrase")
-                if translations_list:
-                    # return synonyms_list
-                    # return json.dumps(translations_list)
-                    return Response().respond(translations_list, format)
-                else:
-                    return False
+        base_url = Vocabulary.__get_api_link("glosbe")
+        url = base_url.format(word=phrase, source_lang=source_lang, dest_lang=dest_lang)
+        json_obj = Vocabulary.__return_json(url)
+        if json_obj:
+            try:
+                tuc_content = json_obj["tuc"]  # "tuc_content" is a "list"
+            except KeyError:
+                return False
+            translations_list = Vocabulary.__parse_content(tuc_content, "phrase")
+            if translations_list:
+                # return synonyms_list
+                # return json.dumps(translations_list)
+                return Response().respond(translations_list, format)
             else:
                 return False
+        else:
+            return False
 
     @staticmethod
     def antonym(phrase, format="json"):
@@ -285,17 +285,17 @@ class Vocabulary(object):
             dictionary = {}
             final_dictionary = {}
             keys = json_obj.keys()
-            ## searching for the key "ant" inside the dictionary which is the value for the particular
-            ## key being iterated (one of the "keys" key)
+            # searching for the key "ant" inside the dictionary which is the value for the particular
+            # key being iterated (one of the "keys" key)
             for key in keys:
                 try:
                     key_value = json_obj[key]
                     value = key_value["ant"]
                     dictionary["text"] = value
-                except KeyError:    ## if no antonyms are found!
+                except KeyError:  # if no antonyms are found!
                     return False
 
-            ##removing duplicates if any
+            # removing duplicates if any
             for key, value in dictionary.items():
                 if value not in final_dictionary.values():
                     final_dictionary[key] = value
@@ -316,7 +316,7 @@ class Vocabulary(object):
         :param format: response structure type. Defaults to: "json"
         :returns: returns a json object as str, False if invalid phrase
         """
-        ## We get a list object as a return value from the Wordnik API
+        # We get a list object as a return value from the Wordnik API
         base_url = Vocabulary.__get_api_link("wordnik")
         url = base_url.format(word=phrase, action="definitions")
         json_obj = Vocabulary.__return_json(url)
@@ -329,10 +329,10 @@ class Vocabulary(object):
                 value = content["text"]
                 part_of_speech[key] = value
                 if part_of_speech:
-                    ## cleaning "part_of_speech" using "__clean_dict()"
+                    # cleaning "part_of_speech" using "__clean_dict()"
                     i = 0
                     for key, value in part_of_speech.items():
-                        final_list.append({ "seq": i, "text": key, "example:" :value})
+                        final_list.append({"seq": i, "text": key, "example:": value})
                         i += 1
                     # return json.dumps(final_list)
                     # return final_list
@@ -360,7 +360,7 @@ class Vocabulary(object):
                 if example["thumbs_up"] > example["thumbs_down"]:
                     word_examples[i] = example["example"].replace("\r", "").replace("\n", "")
             if word_examples:
-                ## reforamatting "word_examples" using "__clean_dict()"
+                # reforamatting "word_examples" using "__clean_dict()"
                 # return json.dumps(Vocabulary.__clean_dict(word_examples))
                 # return Vocabulary.__clean_dict(word_examples)
                 return Response().respond(Vocabulary.__clean_dict(word_examples), format)
@@ -383,14 +383,14 @@ class Vocabulary(object):
         json_obj = Vocabulary.__return_json(url)
         if json_obj:
             '''
-            Refer : http://stackoverflow.com/questions/18337407/saving-utf-8-texts-in-json-dumps-as-utf8-not-as-u-escape-sequence
+            Refer : http://stackoverflow.com/q/18337407/3834059
             '''
-            ## TODO: Fix the unicode issue mentioned in
-            ## https://github.com/prodicus/vocabulary#181known-issues
-            if sys.version_info[:2] <= (2, 7):  ## python2
+            # TODO: Fix the unicode issue mentioned in
+            # https://github.com/prodicus/vocabulary#181known-issues
+            if sys.version_info[:2] <= (2, 7):  # python2
                 # return json_obj
                 return Response().respond(json_obj, format)
-            else:   ## python3
+            else:  # python3
                 # return json.loads(json.dumps(json_obj, ensure_ascii=False))
                 return Response().respond(json_obj, format)
         else:
@@ -407,7 +407,6 @@ class Vocabulary(object):
         """
         base_url = Vocabulary.__get_api_link("wordnik")
         url = base_url.format(word=phrase, action="hyphenation")
-        hyphenation = {}
         json_obj = Vocabulary.__return_json(url)
         if json_obj:
             # return json.dumps(json_obj)
