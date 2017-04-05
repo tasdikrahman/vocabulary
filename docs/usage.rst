@@ -21,13 +21,13 @@ A Simple demonstration of the module
 
     ## "Antonym"
     >>> vb.antonym("respect")
-    '{"text": ["disesteem", "disrespect"]}'
+    '[{"text": "disesteem"}, {"text": "disrespect"}]'
     >>> vb.antonym("insane")
-    '{"text": ["sane"]}'
+    '[{"text": "sane"}]'
 
     ## "Part of Speech"
     >>> vb.part_of_speech("hello")
-    '[{"text": "interjection", "example:": "Used to greet someone, answer the telephone, or express surprise.", "seq": 0}]'
+    '[{"text": "interjection", "example": "greeting", "seq": 0}, {"text": "verb-intransitive", "example": "To call.", "seq": 1}]'
     >>>
 
     ## "Usage Examples"
@@ -37,7 +37,7 @@ A Simple demonstration of the module
 
     ## "Pronunciation"
     >>> vb.pronunciation("hippopotamus")
-    [{'raw': '(hĭpˌə-pŏtˈə-məs)', 'rawType': 'ahd-legacy', 'seq': 0}, {'raw': 'HH IH2 P AH0 P AA1 T AH0 M AH0 S', 'rawType': 'arpabet', 'seq': 0}]
+    '[{'raw': '(hĭpˌə-pŏtˈə-məs)', 'rawType': 'ahd-legacy', 'seq': 0}, {'raw': 'HH IH2 P AH0 P AA1 T AH0 M AH0 S', 'rawType': 'arpabet', 'seq': 1}]'
     >>>
 
     ## "Hyphenation"
@@ -56,7 +56,7 @@ A Simple demonstration of the module
 
     ## "Response Formatting"
     >>> vb.antonym("love", format="dict")
-    {"text": "hate"}
+    '{"text": "hate"}''
     >>> vb.antonym("love", format="list")
     ["hate"]
     >>> vb.part_of_speech("code", format="dict")

@@ -206,10 +206,10 @@ class TestModule(unittest.TestCase):
     def test_antonym_found(self, mock_api_call):
         res = {
             "noun": {
-                "ant": ["hate"]
+                "ant": ["hate", "dislike"]
             },
             "verb": {
-                "ant": ["hate"]
+                "ant": ["hate", "hater"]
             }
         }
 
@@ -217,7 +217,7 @@ class TestModule(unittest.TestCase):
         mock_api_call.return_value.status_code = 200
         mock_api_call.return_value.json.return_value = res
 
-        expected_result = '{"text": ["hate"]}'
+        expected_result = '[{"text": "hate", "seq": 0}, {"text": "dislike", "seq": 1}, {"text": "hater", "seq": 2}]'
         result = vb.antonym("love")
 
         if sys.version_info[:2] <= (2, 7):
@@ -252,6 +252,11 @@ class TestModule(unittest.TestCase):
                 "word": "hello",
                 "partOfSpeech": "interjection",
                 "text": "greeting"
+            },
+            {
+                "word": "hello",
+                "partOfSpeech": "verb-intransitive",
+                "text": "To call."
             }
         ]
 
@@ -259,7 +264,7 @@ class TestModule(unittest.TestCase):
         mock_api_call.return_value.status_code = 200
         mock_api_call.return_value.json.return_value = res
 
-        expected_result = '[{"text": "interjection", "example:": "greeting", "seq": 0}]'
+        expected_result = '[{"text": "interjection", "example": "greeting", "seq": 0}, {"text": "verb-intransitive", "example": "To call.", "seq": 1}]'
         result = vb.part_of_speech("hello")
 
         if sys.version_info[:2] <= (2, 7):
@@ -346,7 +351,7 @@ class TestModule(unittest.TestCase):
         mock_api_call.return_value.status_code = 200
         mock_api_call.return_value.json.return_value = res
 
-        expected_result = '[{"rawType": "ahd-legacy", "raw": "hip", "seq": 0}, {"rawType": "arpabet", "raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "seq": 0}]'
+        expected_result = '[{"rawType": "ahd-legacy", "raw": "hip", "seq": 0}, {"rawType": "arpabet", "raw": "HH IH2 P AH0 P AA1 T AH0 M AH0 S", "seq": 1}]'
         result = vb.pronunciation("hippopotamus")
 
         if sys.version_info[:2] <= (2, 7):

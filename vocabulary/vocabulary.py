@@ -69,10 +69,7 @@ class Vocabulary(object):
             "bighugelabs": "http://words.bighugelabs.com/api/2/eb4e57bb2c34032da68dfeb3a0578b68/{word}/json"
         }
 
-        if api in api_name2links.keys():
-            return api_name2links[api]
-        else:
-            return False
+        return api_name2links.get(api, False)
 
     @staticmethod
     def __return_json(url):
@@ -88,8 +85,7 @@ class Vocabulary(object):
         with try_URL():
             response = requests.get(url)
             if response.status_code == 200:
-                json_obj = response.json()
-                return json_obj
+                return response.json()
             else:
                 return False
 
@@ -277,35 +273,29 @@ class Vocabulary(object):
         url = base_url.format(word=phrase)
         json_obj = Vocabulary.__return_json(url)
 
-        """The thing here is that, I have no way to know what the keys returned would be,
-        so I will use the 'dict.keys()' method to get all the keys first
-        """
-        if json_obj:
-            antonyms = []
-            dictionary = {}
-            final_dictionary = {}
-            keys = json_obj.keys()
-            # searching for the key "ant" inside the dictionary which is the value for the particular
-            # key being iterated (one of the "keys" key)
-            for key in keys:
-                try:
-                    key_value = json_obj[key]
-                    value = key_value["ant"]
-                    dictionary["text"] = value
-                except KeyError:  # if no antonyms are found!
-                    return False
-
-            # removing duplicates if any
-            for key, value in dictionary.items():
-                if value not in final_dictionary.values():
-                    final_dictionary[key] = value
-                    antonyms.append(final_dictionary)
-
-            # return json.dumps(final_dictionary)
-            # return final_dictionary
-            return Response().respond(final_dictionary, format)
-        else:
+        if not json_obj:
             return False
+
+        result = []
+        visited = {}
+        idx = 0
+        for key in json_obj.keys():
+            antonyms = json_obj[key].get('ant', False)
+            if not antonyms:
+                continue
+
+            for antonym in antonyms:
+                if visited.get(antonym, False):
+                    continue
+
+                result.append({'seq': idx, 'text': antonym})
+                idx += 1
+                visited[antonym] = True
+
+        if not result:
+            return False
+
+        return Response().respond(result, format)
 
     @staticmethod
     def part_of_speech(phrase, format='json'):
@@ -321,26 +311,16 @@ class Vocabulary(object):
         url = base_url.format(word=phrase, action="definitions")
         json_obj = Vocabulary.__return_json(url)
 
-        final_list = []
-        if json_obj:
-            part_of_speech = {}
-            for content in json_obj:
-                key = content["partOfSpeech"]
-                value = content["text"]
-                part_of_speech[key] = value
-                if part_of_speech:
-                    # cleaning "part_of_speech" using "__clean_dict()"
-                    i = 0
-                    for key, value in part_of_speech.items():
-                        final_list.append({"seq": i, "text": key, "example:": value})
-                        i += 1
-                    # return json.dumps(final_list)
-                    # return final_list
-                    return Response().respond(final_list, format)
-                else:
-                    return False
-        else:
+        if not json_obj:
             return False
+
+        result = []
+        for idx, obj in enumerate(json_obj):
+            text = obj.get('partOfSpeech', None)
+            example = obj.get('text', None)
+            result.append({"seq": idx, "text": text, "example": example})
+
+        return Response().respond(result, format)
 
     @staticmethod
     def usage_example(phrase, format='json'):
@@ -385,9 +365,12 @@ class Vocabulary(object):
             '''
             Refer : http://stackoverflow.com/q/18337407/3834059
             '''
-            # TODO: Fix the unicode issue mentioned in
-            # https://github.com/prodicus/vocabulary#181known-issues
-            if sys.version_info[:2] <= (2, 7):  # python2
+            ## TODO: Fix the unicode issue mentioned in
+            ## https://github.com/prodicus/vocabulary#181known-issues
+            for idx, obj in enumerate(json_obj):
+                obj['seq'] = idx
+
+            if sys.version_info[:2] <= (2, 7):  ## python2
                 # return json_obj
                 return Response().respond(json_obj, format)
             else:  # python3
