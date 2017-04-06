@@ -253,7 +253,7 @@ Built with ♥ by `Tasdik Rahman <http://tasdikrahman.me/>`__ under the `MIT Lic
 You can find a copy of the License at http://prodicus.mit-license.org/
 
 .. |PyPI version| image:: https://img.shields.io/pypi/v/Vocabulary.svg
-   :target: https://pypi.python.org/pypi/Vocabulary/1.0.0
+   :target: https://pypi.python.org/pypi/Vocabulary/1.0.2
 .. |License| image:: https://img.shields.io/pypi/l/vocabulary.svg
    :target: https://github.com/prodicus/vocabulary/blob/master/LICENSE
 .. |Python Versions| image:: https://img.shields.io/pypi/pyversions/Vocabulary.svg

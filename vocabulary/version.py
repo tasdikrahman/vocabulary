@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
 
-VERSION = '1.0.0'
-RELEASE = '6'
+VERSION = '1.0.2'
+RELEASE = '8'
