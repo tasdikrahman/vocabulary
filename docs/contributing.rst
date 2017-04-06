@@ -54,7 +54,6 @@ To do
 Tests
 =====
 
-``Vocabulary`` uses ``unittesting`` for testing purposes.
 
 Running the test cases
 
@@ -87,7 +86,16 @@ Discuss
 Join us on our `Gitter channel <https://gitter.im/prodicus/vocabulary>`__
 if you want to chat or if you have any questions.
 
-Contributers
+Building the docs
+=================
+
+Install the `Sphinx` by doing a `$ pip install requirements-dev.txt`
+
+.. code-block:: bash
+
+    $ make html
+
+Contributors
 ============
 
 -  Thanks to `Anton Relin <https://github.com/relisher>`__ for adding the `translate()` module

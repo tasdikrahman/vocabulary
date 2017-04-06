@@ -28,7 +28,10 @@ import sys
 
 from .responselib import Response
 
-__version__ = '0.0.6'
+from .version import VERSION, RELEASE
+
+__version__ = VERSION
+__release__ = RELEASE
 __author__ = "Tasdik Rahman"
 
 
