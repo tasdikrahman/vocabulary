@@ -49,7 +49,7 @@ To do
 =====
 
 -  [X] Add translate module
--  [X]  Add an option like `JSON=False` or `JSON=True` where the former returns a list object
+-  [X] Add an option like `JSON=False` or `JSON=True` where the former returns a list object
 
 Tests
 =====
@@ -60,22 +60,38 @@ Running the test cases
 .. code-block:: bash
 
     $ ./tests.py -v
-    test_antonym_1 (__main__.TestModule) ... ok
-    test_antonym_2 (__main__.TestModule) ... ok
-    test_hyphenation (__main__.TestModule) ... ok
-    test_meaning (__main__.TestModule) ... ok
-    test_partOfSpeech_1 (__main__.TestModule) ... ok
-    test_partOfSpeech_2 (__main__.TestModule) ... ok
-    test_pronunciation1 (__main__.TestModule) ... ok
-    test_pronunciation2 (__main__.TestModule) ... ok
-    test_synonym (__main__.TestModule) ... ok
-    test_translate (__main__.TestModule) ... ok
-    test_translate2 (__main__.TestModule) ... ok
-    test_usageExamples1 (__main__.TestModule) ... ok
-    test_usageExamples2 (__main__.TestModule) ... ok
+    test_antonym_ant_key_error (tests.tests.TestModule) ... ok
+    test_antonym_found (tests.tests.TestModule) ... ok
+    test_antonym_not_found (tests.tests.TestModule) ... ok
+    test_hyphenation_found (tests.tests.TestModule) ... ok
+    test_hyphenation_not_found (tests.tests.TestModule) ... ok
+    test_meaning_found (tests.tests.TestModule) ... ok
+    test_meaning_key_error (tests.tests.TestModule) ... ok
+    test_meaning_not_found (tests.tests.TestModule) ... ok
+    test_partOfSpeech_found (tests.tests.TestModule) ... ok
+    test_partOfSpeech_not_found (tests.tests.TestModule) ... ok
+    test_pronunciation_found (tests.tests.TestModule) ... ok
+    test_pronunciation_not_found (tests.tests.TestModule) ... ok
+    test_respond_as_dict_1 (tests.tests.TestModule) ... ok
+    test_respond_as_dict_2 (tests.tests.TestModule) ... ok
+    test_respond_as_dict_3 (tests.tests.TestModule) ... ok
+    test_respond_as_list_1 (tests.tests.TestModule) ... ok
+    test_respond_as_list_2 (tests.tests.TestModule) ... ok
+    test_respond_as_list_3 (tests.tests.TestModule) ... ok
+    test_synonynm_empty_list (tests.tests.TestModule) ... ok
+    test_synonynm_found (tests.tests.TestModule) ... ok
+    test_synonynm_not_found (tests.tests.TestModule) ... ok
+    test_synonynm_tuc_key_error (tests.tests.TestModule) ... ok
+    test_translate_empty_list (tests.tests.TestModule) ... ok
+    test_translate_found (tests.tests.TestModule) ... ok
+    test_translate_not_found (tests.tests.TestModule) ... ok
+    test_translate_tuc_key_error (tests.tests.TestModule) ... ok
+    test_usageExample_empty_list (tests.tests.TestModule) ... ok
+    test_usageExample_found (tests.tests.TestModule) ... ok
+    test_usageExample_not_found (tests.tests.TestModule) ... ok
 
     ----------------------------------------------------------------------
-    Ran 13 tests in 12.898s
+    Ran 29 tests in 0.015s
 
     OK
 
@@ -98,5 +114,6 @@ Install the `Sphinx` by doing a `$ pip install requirements-dev.txt`
 Contributors
 ============
 
+-  Huge shoutout to `@tenorz007 <https://github.com/tenorz007>`__ for adding the ability to return the API response as different data structures.
 -  Thanks to `Anton Relin <https://github.com/relisher>`__ for adding the `translate()` module
 -  A big shout out to all the `contributers <https://github.com/prodicus/vocabulary/graphs/contributors>`__

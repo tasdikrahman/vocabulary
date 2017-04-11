@@ -20,9 +20,10 @@ Changelog
 - Improved Documentation
 - Minor bug fixes
 
-0.0.6
+1.0.0
 ~~~~~
 
-.. versionadded:: 0.06
+.. versionadded:: 1.0.0
 
 - Added support for specifying response format
+- Updated ``Vocabulary.pronunciation``, ``Vocabulary.antonym```, ```Vocabulary.part_of_speech``` to return a list of objects with apprioprate index
