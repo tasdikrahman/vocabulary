@@ -25,7 +25,7 @@ What is it
 ----------
 `[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
 
-For a given word, using ``Vocabulary``, you can get it's
+For a given word, using ``Vocabulary``, you can get its
 
 -  **Meaning**
 -  **Synonyms**
