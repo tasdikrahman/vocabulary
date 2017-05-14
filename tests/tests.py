@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from vocabulary import Vocabulary as vb
+from vocabulary.vocabulary import Vocabulary as vb
 from vocabulary.responselib import Response as rp
 import unittest
 import sys

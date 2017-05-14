@@ -30,3 +30,8 @@ Changelog
 - API changes to importing the module
 ```from vocabulary.vocabulary import Vocabulary as vb``` instead of ```from vocabulary import Vocabulary as vb```
 
+1.0.4
+~~~~~
+
+- Fixed `setup.py` requirements.txt file not found issue by removing the logic to strip dependencies. Just a hack for now. Need to do it the older way.
+- Fixed failing tests in travis due to older unchanged import of `vocabulary`
