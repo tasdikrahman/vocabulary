@@ -88,7 +88,7 @@ Let's say you want to find out the synonyms for the word ``car``.
 
 .. code:: python
 
-    >>> from vocabulary import Vocabulary as vb
+    >>> from vocabulary.vocabulary import Vocabulary as vb
     >>> vb.synonym("car")
     '[{
       "seq": 0,

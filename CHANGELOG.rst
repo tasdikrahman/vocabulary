@@ -22,3 +22,11 @@ Changelog
 
 - Added support for specifying response format
 - Updated ``Vocabulary.pronunciation``, ``Vocabulary.antonym```, ```Vocabulary.part_of_speech``` to return a list of objects with apprioprate index
+
+1.0.3
+~~~~~
+
+- Fixed `setup.py` import issue
+- API changes to importing the module
+```from vocabulary.vocabulary import Vocabulary as vb``` instead of ```from vocabulary import Vocabulary as vb```
+

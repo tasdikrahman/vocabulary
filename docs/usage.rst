@@ -7,7 +7,7 @@ A Simple demonstration of the module
 .. code-block:: python
 
     ## Importing the module
-    >>> from vocabulary import Vocabulary as vb
+    >>> from vocabulary.vocabulary import Vocabulary as vb
 
     ## Extracting "Meaning"
     >>> vb.meaning("hillbilly")

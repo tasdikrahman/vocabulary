@@ -30,10 +30,6 @@ from .responselib import Response
 
 from .version import VERSION, RELEASE
 
-__version__ = VERSION
-__release__ = RELEASE
-__author__ = "Tasdik Rahman"
-
 
 @contextlib.contextmanager
 def try_URL(message='Connection Lost'):
@@ -56,6 +52,10 @@ class Vocabulary(object):
     |                   | pronunciation()  |
     |                   | translate()      |
     """
+    
+    __version__ = VERSION
+    __release__ = RELEASE
+    __author__ = "Tasdik Rahman"
 
     @staticmethod
     def __get_api_link(api):
