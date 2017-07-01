@@ -14,7 +14,7 @@ A dictionary magician in the form of a module!
 
 |Instamojo|
 
-Some of my projects are also on `Gratipay <https://gratipay.com/~prodicus/>`__
+Some of my projects are also on `Gratipay <https://gratipay.com/~tasdikrahman/>`__
 
 .. contents::
     :backlinks: none
@@ -23,7 +23,7 @@ Some of my projects are also on `Gratipay <https://gratipay.com/~prodicus/>`__
 
 What is it
 ----------
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
 For a given word, using ``Vocabulary``, you can get its
 
@@ -40,17 +40,17 @@ For a given word, using ``Vocabulary``, you can get its
 
 Features
 --------
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
 -  Written in uncomplicated ``Python``
 -  Returns ``JSON`` objects, ``PYTHON`` dictionaries and lists
 -  Minimum dependencies ( just uses `requests <https://github.com/kennethreitz/requests>`__ module )
 -  Easy to
-   `install <https://github.com/prodicus/vocabulary#installation>`__
+   `install <https://github.com/tasdikrahman/vocabulary#installation>`__
 -  A decent substitute to ``Wordnet``\ (well almost!) Wanna see? Here is
    a `small comparison <#wordnet-comparison>`__
 -  Stupidly `easy to
-   use <https://github.com/prodicus/vocabulary#usage>`__
+   use <https://github.com/tasdikrahman/vocabulary#usage>`__
 -  Fast!
 -  Supports
 
@@ -59,14 +59,14 @@ Features
 
 Why should I use Vocabulary
 ---------------------------
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
 ``Wordnet`` is a great resource. No doubt about it! So why should you
 use ``Vocabulary`` when we already have ``Wordnet`` out there?
 
 Wordnet Comparison
 ~~~~~~~~~~~~~~~~~~
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
 Let's say you want to find out the synonyms for the word ``car``.
 
@@ -118,7 +118,7 @@ You can go on comparing for the other methods too.
 
 Installation
 ------------
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
 Option 1: installing through `pip <https://pypi.python.org/pypi/vocabulary>`__ (Suggested way)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -139,7 +139,7 @@ Option 2: Installing from source (Only if you must)
 
 .. code:: bash
 
-    $ git clone https://github.com/prodicus/vocabulary.git
+    $ git clone https://github.com/tasdikrahman/vocabulary.git
     $ cd vocabulary/
     $ pip install -r requirements.txt
     $ python setup.py install
@@ -147,60 +147,60 @@ Option 2: Installing from source (Only if you must)
 
 Demo
 ~~~~
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
-.. figure:: https://raw.githubusercontent.com/prodicus/vocabulary/master/assets/usage.gif
+.. figure:: https://raw.githubusercontent.com/tasdikrahman/vocabulary/master/assets/usage.gif
    :alt: Demo link
 
-.. figure:: https://raw.githubusercontent.com/prodicus/vocabulary/master/assets/usage-format.gif
+.. figure:: https://raw.githubusercontent.com/tasdikrahman/vocabulary/master/assets/usage-format.gif
     :alt: Demo link
 
 Documentation
 -------------
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
 For a detailed usage example, refer the `documentation at Read the Docs <http://vocabulary.readthedocs.org/en/latest/>`__
 
 Contributing
 ------------
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
-Please refer `Contributing page for details <https://github.com/prodicus/vocabulary/blob/master/CONTRIBUTING.rst>`__
+Please refer `Contributing page for details <https://github.com/tasdikrahman/vocabulary/blob/master/CONTRIBUTING.rst>`__
 
 
 Discuss
 ~~~~~~~
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
-Join us on our `Gitter channel <https://gitter.im/prodicus/vocabulary>`__
+Join us on our `Gitter channel <https://gitter.im/tasdikrahman/vocabulary>`__
 if you want to chat or if you have any questions in your mind.
 
 Contributers
 ~~~~~~~~~~~~
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
 -  Huge shoutout to `@tenorz007 <https://github.com/tenorz007>`__ for adding the ability to return the API response as different data structures.
--  Thanks to `Anton Relin <https://github.com/relisher>`__ for adding the `translate <https://github.com/prodicus/vocabulary/blob/master/vocabulary/vocabulary.py#L218>`__ module.
-- And a big shout out to all the `contributers <https://github.com/prodicus/vocabulary/graphs/contributors>`__ for their contributions
+-  Thanks to `Anton Relin <https://github.com/relisher>`__ for adding the `translate <https://github.com/tasdikrahman/vocabulary/blob/master/vocabulary/vocabulary.py#L218>`__ module.
+- And a big shout out to all the `contributers <https://github.com/tasdikrahman/vocabulary/graphs/contributors>`__ for their contributions
 
 Changelog
 ---------
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
-Please refer `Changelog page for details <https://github.com/prodicus/vocabulary/blob/master/CHANGELOG.rst>`__
+Please refer `Changelog page for details <https://github.com/tasdikrahman/vocabulary/blob/master/CHANGELOG.rst>`__
 
 Bugs
 ----
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
 Please report the bugs at the `issue
-tracker <https://github.com/prodicus/vocabulary/issues>`__
+tracker <https://github.com/tasdikrahman/vocabulary/issues>`__
 
 Similar
 -------
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
-Other similar software inspired by `Vocabulary <https://github.com/prodicus/vocabulary>`__
+Other similar software inspired by `Vocabulary <https://github.com/tasdikrahman/vocabulary>`__
 
 -  `Vocabulary <https://github.com/karan/vocabulary>`__ : The ``Go lang`` port of this ``python`` counterpart
 -  `woordy <https://github.com/alephmelo/woordy>`__ : Gives back word translations
@@ -208,7 +208,7 @@ Other similar software inspired by `Vocabulary <https://github.com/prodicus/voca
 
 Known Issues
 ~~~~~~~~~~~~
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
 -  In **python2**, when using the method **Vocabulary.synonym()** or **Vocabulary.pronunciation()**
 
@@ -246,7 +246,7 @@ I may suggest `python-ftfy <https://github.com/LuminosoInsight/python-ftfy>`__ w
 
 License :
 ---------
-`[back to top] <https://github.com/prodicus/vocabulary#vocabulary>`__
+`[back to top] <https://github.com/tasdikrahman/vocabulary#vocabulary>`__
 
 Built with ♥ by `Tasdik Rahman <http://tasdikrahman.me/>`__ under the `MIT License <http://prodicus.mit-license.org/>`__ ©
 
@@ -255,15 +255,15 @@ You can find a copy of the License at http://prodicus.mit-license.org/
 .. |PyPI version| image:: https://img.shields.io/pypi/v/Vocabulary.svg
    :target: https://pypi.python.org/pypi/Vocabulary/1.0.2
 .. |License| image:: https://img.shields.io/pypi/l/vocabulary.svg
-   :target: https://github.com/prodicus/vocabulary/blob/master/LICENSE
+   :target: https://github.com/tasdikrahman/vocabulary/blob/master/LICENSE
 .. |Python Versions| image:: https://img.shields.io/pypi/pyversions/Vocabulary.svg
-.. |Build Status| image:: https://travis-ci.org/prodicus/vocabulary.svg?branch=master
-   :target: https://travis-ci.org/prodicus/vocabulary
+.. |Build Status| image:: https://travis-ci.org/tasdikrahman/vocabulary.svg?branch=master
+   :target: https://travis-ci.org/tasdikrahman/vocabulary
 .. |Gitter chat| image:: https://img.shields.io/gitter/room/gitterHQ/gitter.svg
    :alt: Join the chat at https://gitter.im/prodicus/vocabulary
    :target: https://gitter.im/prodicus/vocabulary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-.. |Requirements Status| image:: https://requires.io/github/prodicus/vocabulary/requirements.svg?branch=master
-   :target: https://requires.io/github/prodicus/vocabulary/requirements/?branch=master
+.. |Requirements Status| image:: https://requires.io/github/tasdikrahman/vocabulary/requirements.svg?branch=master
+   :target: https://requires.io/github/tasdikrahman/vocabulary/requirements/?branch=master
 .. |Paypal badge| image:: https://tuxtricks.files.wordpress.com/2016/12/donate.png
    :target: https://www.paypal.me/tasdikrahman
 .. |Instamojo| image:: https://www.instamojo.com/blog/wp-content/uploads/2017/01/instamojo-91.png

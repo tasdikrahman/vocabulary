@@ -12,7 +12,7 @@ create a `virtualenv <http://pypi.python.org/pypi/virtualenv>`__
 
     $ virtualenv develop              # Create virtual environment
     $ source develop/bin/activate     # Change default python to virtual one
-    (develop)$ git clone https://github.com/prodicus/vocabulary.git
+    (develop)$ git clone https://github.com/tasdikrahman/vocabulary.git
     (develop)$ cd vocabulary
     (develop)$ pip install -r requirements.txt  # Install requirements for 'Vocabulary' in virtual environment
 
@@ -23,7 +23,7 @@ Or, if ``virtualenv`` is not installed on your system:
     $ wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
     $ python virtualenv.py develop    # Create virtual environment
     $ source develop/bin/activate     # Change default python to virtual one
-    (develop)$ git clone https://github.com/prodicus/vocabulary.git
+    (develop)$ git clone https://github.com/tasdikrahman/vocabulary.git
     (develop)$ cd vocabulary
     (develop)$ pip install -r requirements.txt  # Install requirements for 'Vocabulary' in virtual environment
 
@@ -116,4 +116,4 @@ Contributors
 
 -  Huge shoutout to `@tenorz007 <https://github.com/tenorz007>`__ for adding the ability to return the API response as different data structures.
 -  Thanks to `Anton Relin <https://github.com/relisher>`__ for adding the `translate()` module
--  A big shout out to all the `contributers <https://github.com/prodicus/vocabulary/graphs/contributors>`__
+-  A big shout out to all the `contributers <https://github.com/tasdikrahman/vocabulary/graphs/contributors>`__

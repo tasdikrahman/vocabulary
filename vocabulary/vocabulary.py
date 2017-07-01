@@ -369,7 +369,7 @@ class Vocabulary(object):
             Refer : http://stackoverflow.com/q/18337407/3834059
             '''
             ## TODO: Fix the unicode issue mentioned in
-            ## https://github.com/prodicus/vocabulary#181known-issues
+            ## https://github.com/tasdikrahman/vocabulary#181known-issues
             for idx, obj in enumerate(json_obj):
                 obj['seq'] = idx
 

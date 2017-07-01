@@ -22,9 +22,9 @@ Features
 -  Written in uncomplicated ``Python``
 -  Returns ``JSON`` objects
 -  Minimum dependencies ( just uses `requests <https://github.com/kennethreitz/requests>`__ )
--  Easy to `install <https://github.com/prodicus/vocabulary#installation>`__
+-  Easy to `install <https://github.com/tasdikrahman/vocabulary#installation>`__
 -  A decent substitute to ``Wordnet``\ (well almost!) Wanna see? Here is a `small comparison <#wordnet-comparison>`__
--  Stupidly `easy to use <https://github.com/prodicus/vocabulary#usage>`__
+-  Stupidly `easy to use <https://github.com/tasdikrahman/vocabulary#usage>`__
 -  Fast!
 -  Supports
 

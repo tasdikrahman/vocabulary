@@ -32,7 +32,7 @@ Option 2: Installing from source
 
 .. code-block:: bash
 
-    $ git clone https://github.com/prodicus/vocabulary.git
+    $ git clone https://github.com/tasdikrahman/vocabulary.git
     $ cd vocabulary/
     $ pip install -r requirements.txt
     $ python setup.py install

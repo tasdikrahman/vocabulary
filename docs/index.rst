@@ -37,9 +37,9 @@ Indices and tables
 .. |License| image:: https://img.shields.io/pypi/l/vocabulary.svg
    :target: https://img.shields.io/pypi/l/vocabulary.svg
 .. |Python Versions| image:: https://img.shields.io/pypi/pyversions/Vocabulary.svg
-.. |Build Status| image:: https://travis-ci.org/prodicus/vocabulary.svg?branch=master
+.. |Build Status| image:: https://travis-ci.org/tasdikrahman/vocabulary.svg?branch=master
 .. |Gitter chat| image:: https://badges.gitter.im/Join%20Chat.svg
    :alt: Join the chat at https://gitter.im/prodicus/vocabulary
    :target: https://gitter.im/prodicus/vocabulary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-.. |Requirements Status| image:: https://requires.io/github/prodicus/vocabulary/requirements.svg?branch=master
-   :target: https://requires.io/github/prodicus/vocabulary/requirements/?branch=master
+.. |Requirements Status| image:: https://requires.io/github/tasdikrahman/vocabulary/requirements.svg?branch=master
+   :target: https://requires.io/github/tasdikrahman/vocabulary/requirements/?branch=master
