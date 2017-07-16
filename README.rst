@@ -14,7 +14,9 @@ A dictionary magician in the form of a module!
 
 |Instamojo|
 
-Some of my projects are also on `Gratipay <https://gratipay.com/~tasdikrahman/>`__
+|gratipay|
+
+|patreon|
 
 .. contents::
     :backlinks: none
@@ -264,7 +266,11 @@ You can find a copy of the License at http://prodicus.mit-license.org/
    :target: https://gitter.im/prodicus/vocabulary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 .. |Requirements Status| image:: https://requires.io/github/tasdikrahman/vocabulary/requirements.svg?branch=master
    :target: https://requires.io/github/tasdikrahman/vocabulary/requirements/?branch=master
-.. |Paypal badge| image:: https://tuxtricks.files.wordpress.com/2016/12/donate.png
-   :target: https://www.paypal.me/tasdikrahman
-.. |Instamojo| image:: https://www.instamojo.com/blog/wp-content/uploads/2017/01/instamojo-91.png
+.. |Paypal badge| image:: https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg
+   :target: https://www.paypal.me/tasdik
+.. |gratipay| image:: https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png
+   :target: 
+.. |Instamojo| image:: https://www.soldermall.com/images/pic-online-payment.jpg
    :target: https://www.instamojo.com/@tasdikrahman
+.. |patreon| image:: http://i.imgur.com/ICWPFOs.png
+   :target: https://www.patreon.com/tasdikrahman/
