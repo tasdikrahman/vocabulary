@@ -10,14 +10,6 @@ A dictionary magician in the form of a module!
 
 :Author: Tasdik Rahman
 
-|Paypal badge|
-
-|Instamojo|
-
-|gratipay|
-
-|patreon|
-
 .. contents::
     :backlinks: none
 
@@ -254,6 +246,17 @@ Built with ♥ by `Tasdik Rahman <http://tasdikrahman.me/>`__ under the `MIT Lic
 
 You can find a copy of the License at http://prodicus.mit-license.org/
 
+Donation
+--------
+
+|Paypal badge|
+
+|Instamojo|
+
+|gratipay|
+
+|patreon|
+
 .. |PyPI version| image:: https://img.shields.io/pypi/v/Vocabulary.svg
    :target: https://pypi.python.org/pypi/Vocabulary/1.0.2
 .. |License| image:: https://img.shields.io/pypi/l/vocabulary.svg
@@ -269,7 +272,7 @@ You can find a copy of the License at http://prodicus.mit-license.org/
 .. |Paypal badge| image:: https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg
    :target: https://www.paypal.me/tasdik
 .. |gratipay| image:: https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png
-   :target: 
+   :target: https://gratipay.com/tasdikrahman/
 .. |Instamojo| image:: https://www.soldermall.com/images/pic-online-payment.jpg
    :target: https://www.instamojo.com/@tasdikrahman
 .. |patreon| image:: http://i.imgur.com/ICWPFOs.png
