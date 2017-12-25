@@ -52,7 +52,7 @@ class Vocabulary(object):
     |                   | pronunciation()  |
     |                   | translate()      |
     """
-    
+
     __version__ = VERSION
     __release__ = RELEASE
     __author__ = "Tasdik Rahman"
@@ -311,7 +311,7 @@ class Vocabulary(object):
         """
         # We get a list object as a return value from the Wordnik API
         base_url = Vocabulary.__get_api_link("wordnik")
-        url = base_url.format(word=phrase, action="definitions")
+        url = base_url.format(word=phrase.lower(), action="definitions")
         json_obj = Vocabulary.__return_json(url)
 
         if not json_obj:
@@ -362,7 +362,7 @@ class Vocabulary(object):
         :returns: returns a list object, False if invalid phrase
         """
         base_url = Vocabulary.__get_api_link("wordnik")
-        url = base_url.format(word=phrase, action="pronunciations")
+        url = base_url.format(word=phrase.lower(), action="pronunciations")
         json_obj = Vocabulary.__return_json(url)
         if json_obj:
             '''
@@ -392,7 +392,7 @@ class Vocabulary(object):
         :returns: returns a json object as str, False if invalid phrase
         """
         base_url = Vocabulary.__get_api_link("wordnik")
-        url = base_url.format(word=phrase, action="hyphenation")
+        url = base_url.format(word=phrase.lower(), action="hyphenation")
         json_obj = Vocabulary.__return_json(url)
         if json_obj:
             # return json.dumps(json_obj)
